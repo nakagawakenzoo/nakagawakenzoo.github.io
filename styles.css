@@ -186,8 +186,8 @@ a { color: var(--accent-soft); transition: color 0.4s ease; }
   margin: 0 auto 1rem;
   border: 2px solid var(--accent);
   box-shadow: 0 0 32px var(--accent-glow);
-  transition: border-color 0.4s ease, box-shadow 0.4s ease;
   object-fit: cover;
+  animation: avatarNeon 8s linear infinite;
 }
 
 .avatar-placeholder {
@@ -203,9 +203,8 @@ a { color: var(--accent-soft); transition: color 0.4s ease; }
   font-size: 3.4rem;
   line-height: 1;
   color: var(--text);
-  text-shadow: 0 0 18px var(--accent-glow);
-  transition: text-shadow 0.4s ease;
   transform: translateY(2px);
+  animation: kNeon 8s linear infinite;
 }
 
 .hero-title {
@@ -216,6 +215,60 @@ a { color: var(--accent-soft); transition: color 0.4s ease; }
   text-transform: uppercase;
 }
 
+/* ===== Glitch periódico (a cada 5s) no nome ===== */
+.glitch {
+  position: relative;
+  animation: glitchShake 5s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.glitch::before { color: #22d3ee; animation: glitchTop 5s infinite; }
+.glitch::after  { color: #f0398b; animation: glitchBottom 5s infinite; }
+
+@keyframes glitchShake {
+  0%, 8%, 100% { transform: translate(0, 0); }
+  1% { transform: translate(-2px, 1px); }
+  2% { transform: translate(2px, -1px); }
+  3% { transform: translate(-1px, -2px); }
+  4% { transform: translate(2px, 1px); }
+  5% { transform: translate(-2px, 0); }
+  6% { transform: translate(1px, -1px); }
+  7% { transform: translate(-1px, 1px); }
+}
+
+@keyframes glitchTop {
+  0%   { opacity: 0; clip-path: inset(0 0 100% 0); transform: translate(0, 0); }
+  0.5% { opacity: 0.9; clip-path: inset(0 0 62% 0); transform: translate(-4px, -2px); }
+  2%   { clip-path: inset(22% 0 40% 0); transform: translate(4px, 2px); }
+  4%   { clip-path: inset(42% 0 20% 0); transform: translate(-5px, 0); }
+  6%   { clip-path: inset(12% 0 68% 0); transform: translate(3px, -1px); }
+  8%   { opacity: 0.9; clip-path: inset(58% 0 10% 0); transform: translate(-2px, 2px); }
+  8.5%, 100% { opacity: 0; transform: translate(0, 0); }
+}
+
+@keyframes glitchBottom {
+  0%   { opacity: 0; clip-path: inset(100% 0 0 0); transform: translate(0, 0); }
+  0.5% { opacity: 0.9; clip-path: inset(68% 0 0 0); transform: translate(4px, 2px); }
+  2%   { clip-path: inset(40% 0 30% 0); transform: translate(-4px, -2px); }
+  4%   { clip-path: inset(20% 0 50% 0); transform: translate(5px, 0); }
+  6%   { clip-path: inset(60% 0 12% 0); transform: translate(-3px, 1px); }
+  8%   { opacity: 0.9; clip-path: inset(10% 0 78% 0); transform: translate(2px, -2px); }
+  8.5%, 100% { opacity: 0; transform: translate(0, 0); }
+}
+
 .hero-bio {
   margin-top: 0.5rem;
   font-size: clamp(1.05rem, 3vw, 1.35rem);
@@ -223,9 +276,48 @@ a { color: var(--accent-soft); transition: color 0.4s ease; }
   letter-spacing: 0.35em;
   text-transform: uppercase;
   color: var(--accent-soft);
-  transition: color 0.4s ease;
   /* letter-spacing empurra o texto; compensa o recuo à direita */
   padding-left: 0.35em;
+  min-height: 1.6em; /* evita "pulo" de layout durante a digitação */
+  animation: textNeon 8s linear infinite;
+}
+
+/* cursor piscando após o Tèknolōdiæ */
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.05em;
+  margin-left: 0.02em;
+  background: currentColor;
+  vertical-align: -0.15em;
+  animation: caretBlink 1.05s steps(1, end) infinite;
+}
+
+@keyframes caretBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ===== Neon ciclando pela paleta (violeta → verde → amarelo → azul) ===== */
+@keyframes avatarNeon {
+  0%,   100% { border-color: #a78bfa; box-shadow: 0 0 34px rgba(139, 92, 246, 0.5); }
+  25%        { border-color: #34d399; box-shadow: 0 0 34px rgba(16, 185, 129, 0.5); }
+  50%        { border-color: #fde047; box-shadow: 0 0 34px rgba(250, 204, 21, 0.5); }
+  75%        { border-color: #7dd3fc; box-shadow: 0 0 34px rgba(56, 189, 248, 0.5); }
+}
+
+@keyframes kNeon {
+  0%,   100% { text-shadow: 0 0 16px rgba(139, 92, 246, 0.95), 0 0 34px rgba(139, 92, 246, 0.55); }
+  25%        { text-shadow: 0 0 16px rgba(16, 185, 129, 0.95), 0 0 34px rgba(16, 185, 129, 0.55); }
+  50%        { text-shadow: 0 0 16px rgba(250, 204, 21, 0.95), 0 0 34px rgba(250, 204, 21, 0.55); }
+  75%        { text-shadow: 0 0 16px rgba(56, 189, 248, 0.95), 0 0 34px rgba(56, 189, 248, 0.55); }
+}
+
+@keyframes textNeon {
+  0%,   100% { color: #a78bfa; }
+  25%        { color: #34d399; }
+  50%        { color: #fde047; }
+  75%        { color: #7dd3fc; }
 }
 
 /* ============ Botões ============ */

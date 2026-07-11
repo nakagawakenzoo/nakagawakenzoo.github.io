@@ -121,6 +121,24 @@
     checkMiddle();
   }
 
+  /* ============ Efeito de digitação do Tèknolōdiæ ============ */
+  var typed = document.querySelector(".hero-bio .typed");
+  if (typed) {
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var full = Array.from(typed.textContent); // Array.from lida bem com acentos
+    if (!reduceMotion) {
+      typed.textContent = "";
+      var i = 0;
+      (function typeNext() {
+        typed.textContent = full.slice(0, i).join("");
+        if (i <= full.length) {
+          i++;
+          setTimeout(typeNext, 130);
+        }
+      })();
+    }
+  }
+
   /* ============ Ano dinâmico ============ */
   document.getElementById("year").textContent = new Date().getFullYear();
 })();
