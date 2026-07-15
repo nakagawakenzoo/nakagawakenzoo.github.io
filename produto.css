@@ -1,13 +1,22 @@
 /* ==========================================================================
-   Página de detalhe — Automação de Vídeos (acento verde esmeralda)
+   Páginas de detalhe de produto (Vídeos, Cortes, …)
+   Estrutura compartilhada; cada página define seu acento via classe no <body>.
    Reaproveita tokens e componentes de styles.css.
    ========================================================================== */
 
+/* Acento por produto */
 .page-video {
   --accent: #10b981;
   --accent-soft: #34d399;
   --accent-contrast: #06120d;
   --accent-glow: rgba(16, 185, 129, 0.35);
+}
+
+.page-cortes {
+  --accent: #8b5cf6;
+  --accent-soft: #a78bfa;
+  --accent-contrast: #0d0b14;
+  --accent-glow: rgba(139, 92, 246, 0.35);
 }
 
 /* Link "Voltar" no header */
