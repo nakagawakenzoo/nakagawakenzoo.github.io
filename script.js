@@ -139,6 +139,43 @@
     }
   }
 
+  /* ============ Copiar chave Pix ============ */
+  var copyBtn = document.getElementById("copyPix");
+  var pixKey = document.getElementById("pixKey");
+
+  if (copyBtn && pixKey) {
+    copyBtn.addEventListener("click", function () {
+      var chave = pixKey.textContent.trim();
+
+      function feedback(ok) {
+        var original = "Copiar";
+        copyBtn.textContent = ok ? "Copiado!" : "Copie manualmente";
+        setTimeout(function () { copyBtn.textContent = original; }, 2000);
+      }
+
+      // Fallback p/ navegadores sem Clipboard API (ou fora de HTTPS)
+      function copiarFallback() {
+        var ta = document.createElement("textarea");
+        ta.value = chave;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        var ok = false;
+        try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+        document.body.removeChild(ta);
+        feedback(ok);
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(chave).then(function () { feedback(true); }).catch(copiarFallback);
+      } else {
+        copiarFallback();
+      }
+    });
+  }
+
   /* ============ Ano dinâmico ============ */
   document.getElementById("year").textContent = new Date().getFullYear();
 })();
