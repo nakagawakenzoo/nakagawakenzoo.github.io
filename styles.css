@@ -493,6 +493,7 @@ a { color: var(--accent-soft); transition: color 0.4s ease; }
 }
 
 .panel-desc { font-size: 0.95rem; max-width: 46ch; }
+.panel-desc strong { color: var(--card-soft); font-weight: 700; }
 
 .panel-bullets {
   list-style: none;
