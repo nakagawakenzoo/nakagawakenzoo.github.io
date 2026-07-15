@@ -31,6 +31,7 @@
 [data-accent="green"]  { --card: #10b981; --card-soft: #34d399; --card-contrast: #0d0b14; --card-glow: rgba(16, 185, 129, 0.35); }
 [data-accent="yellow"] { --card: #facc15; --card-soft: #fde047; --card-contrast: #0d0b14; --card-glow: rgba(250, 204, 21, 0.35); }
 [data-accent="blue"]   { --card: #38bdf8; --card-soft: #7dd3fc; --card-contrast: #0d0b14; --card-glow: rgba(56, 189, 248, 0.35); }
+[data-accent="rose"]   { --card: #f43f5e; --card-soft: #fb7185; --card-contrast: #0d0b14; --card-glow: rgba(244, 63, 94, 0.35); }
 
 /* ============ Reset básico ============ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -740,6 +741,46 @@ a { color: var(--accent-soft); transition: color 0.4s ease; }
   padding: 0 1.15rem 1rem;
   font-size: 0.9rem;
 }
+
+/* ============ Comunidade (Discord) — usado na home e nas páginas de produto ============ */
+.v-community {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  background:
+    radial-gradient(600px 240px at 50% 0%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%),
+    var(--bg-card);
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  border-radius: var(--radius-card);
+  box-shadow: 0 0 34px var(--accent-glow);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.v-community-ic {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  transition: color 0.4s ease, background-color 0.4s ease;
+}
+.v-community-ic svg { width: 30px; height: 30px; }
+
+.v-community h3 {
+  color: var(--text);
+  font-weight: 800;
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+.v-community p { font-size: 0.95rem; max-width: 520px; margin: 0 auto; }
+.v-community strong { color: var(--accent-soft); transition: color 0.4s ease; }
 
 /* ============ Disclaimer / Footer ============ */
 .disclaimer {

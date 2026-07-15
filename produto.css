@@ -251,43 +251,7 @@
 }
 .v-req strong { color: var(--text); }
 
-/* ============ Comunidade (Discord) ============ */
-.v-community {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem;
-  text-align: center;
-  background:
-    radial-gradient(600px 240px at 50% 0%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%),
-    var(--bg-card);
-  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
-  border-radius: var(--radius-card);
-  box-shadow: 0 0 34px var(--accent-glow);
-}
-
-.v-community-ic {
-  width: 56px;
-  height: 56px;
-  margin: 0 auto 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 14px;
-  color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 14%, transparent);
-}
-.v-community-ic svg { width: 30px; height: 30px; }
-
-.v-community h3 {
-  color: var(--text);
-  font-weight: 800;
-  font-size: clamp(1.1rem, 3vw, 1.4rem);
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  margin-bottom: 0.6rem;
-}
-.v-community p { font-size: 0.95rem; max-width: 520px; margin: 0 auto; }
-.v-community strong { color: var(--accent-soft); }
+/* Bloco de comunidade (.v-community) vive em styles.css — usado aqui e na home */
 
 /* ============ CTA final ============ */
 .v-cta {
@@ -317,9 +281,13 @@
 @media (min-width: 600px) {
   .v-stats { grid-template-columns: repeat(4, 1fr); }
   .v-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Entregáveis: flex centralizado — acomoda 5 itens sem deixar órfão na última linha */
+  .v-grid-4 { display: flex; flex-wrap: wrap; justify-content: center; }
+  .v-grid-4 > * { flex: 1 1 210px; max-width: 280px; }
 }
 
 @media (min-width: 900px) {
-  .v-grid-4 { grid-template-columns: repeat(4, 1fr); }
   .v-grid:not(.v-grid-4) { grid-template-columns: repeat(3, 1fr); }
+  .v-grid-4 > * { flex: 1 1 158px; max-width: 210px; }
 }
