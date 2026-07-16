@@ -881,6 +881,10 @@ a { color: var(--accent-soft); transition: color 0.4s ease; }
 .footer a { text-decoration: none; }
 .footer a:hover { text-decoration: underline; }
 
+.footer-links { margin-top: 0.5rem; font-size: 0.8rem; }
+.footer-links a { color: var(--text-dim); text-decoration: none; }
+.footer-links a:hover { color: var(--accent-soft); text-decoration: underline; }
+
 .footer-copy { margin-top: 0.4rem; color: var(--text-dim); font-size: 0.75rem; }
 
 /* ============ Mobile: painéis mais suaves, ~92% da largura ============ */
