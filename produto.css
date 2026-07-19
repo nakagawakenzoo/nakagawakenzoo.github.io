@@ -75,6 +75,21 @@
   flex-wrap: wrap;
 }
 
+/* Preço no hero do produto */
+.v-price {
+  margin-top: 0.9rem;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+.v-price span {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-dim);
+}
+
 /* Stats */
 .v-stats {
   margin-top: 2.5rem;

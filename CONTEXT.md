@@ -52,6 +52,8 @@ Site pessoal de **Kenzo Nakagawa** que cumpre dois papéis:
 | `legal.css` | Estilos da página de termos. |
 | `assets/favicon.svg` | Favicon (olho minimalista violeta). |
 | `assets/LEIA-ME.md` | Lista das imagens que faltam subir. |
+| `assets/og-cover.jpg` | Imagem OG 1200×630 (gerada por script; capa dos compartilhamentos). |
+| `sitemap.xml` / `robots.txt` / `404.html` | Higiene SEO + página de erro do Pages. |
 | `BRIEFING-LANDING-PAGE.md` | Briefing original do projeto. |
 | `.gitignore` | Ignora `.claude/`. |
 
@@ -99,6 +101,11 @@ alternando o lado de origem (zigue-zague esquerda/direita):
 ### Links de checkout (Kiwify)
 - Automação de Vídeos: `https://pay.kiwify.com.br/Uu09KDB`
 - Automação de Cortes: `https://pay.kiwify.com.br/1YQ9fto`
+
+### Preços exibidos no site (desde 2026-07-19)
+- Vídeos **R$ 597** · Cortes **R$ 250** — pagamento único, garantia de 7 dias.
+- Aparecem nos painéis da home (`.panel-price`, cor do card) e no hero + CTA final das
+  páginas de produto (`.v-price`, cor do accent). Ao mudar preço na Kiwify, atualizar aqui.
 
 As páginas de detalhe descrevem o pipeline real das automações (vindo de fluxos n8n),
 mas **de forma genérica** — sem expor chaves de API, IDs de credencial, caminhos de
@@ -162,9 +169,13 @@ arquivo, voice IDs ou nomes de canal.
 ## 10. Pendências / TODO
 
 - [ ] **Link de convite do Discord** (transformar os blocos de comunidade em botão).
-- [ ] **Imagens** em `assets/`: `perfil.jpg`, `og-cover.jpg` e as capas dos produtos
-      (hoje há placeholders/anéis). Ver `assets/LEIA-ME.md`.
-- [ ] **Meta `og:image`** aponta para `assets/og-cover.jpg` (ainda não existe).
+- [ ] **Imagens** em `assets/`: `perfil.jpg` e as capas dos produtos (hoje há
+      placeholders/anéis). Ver `assets/LEIA-ME.md`. (`og-cover.jpg` feita em 2026-07-19.)
+- [x] ~~Meta `og:image`~~ — `og-cover.jpg` criada e og:url/og:image da home corrigidos (2026-07-19).
+- [ ] **GoatCounter**: criar conta gratuita em goatcounter.com com o código `kenzonakagawa`
+      e descomentar o script nas 4 páginas (snippet já está lá, comentado).
+- [ ] **Prova social**: escolher 1 vídeo real gerado por cada automação e embutir nas
+      páginas de produto (aumenta conversão mais que qualquer texto).
 - [ ] **Salesforce Marketing Cloud**: sair de "Em breve" quando lançar (tem CTA de compra a criar).
 - [ ] **Revisão jurídica** dos Termos (Seções 8 e 9) e, se abrir **MEI/CNPJ**, trocar a
       identificação do fornecedor de CPF para CNPJ.
@@ -173,4 +184,4 @@ arquivo, voice IDs ou nomes de canal.
 
 ---
 
-_Última atualização deste contexto: 2026-07-15._
+_Última atualização deste contexto: 2026-07-19._
