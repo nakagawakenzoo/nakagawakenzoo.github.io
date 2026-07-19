@@ -1,12 +1,12 @@
-# CONTEXT.md — Contexto do projeto (para humanos e outras IAs)
+# CLAUDE.md — Contexto do projeto (para humanos e outras IAs)
 
+> **Espelho de `CONTEXT.md`** (mesmo conteúdo). O Claude Code carrega este arquivo
+> automaticamente; `CONTEXT.md` existe para outras IAs/ferramentas. **Ao editar um,
+> atualize o outro** (trate o conteúdo como uma fonte única em dois nomes).
+>
 > Este arquivo explica **o que é este projeto, como ele está organizado e quais
 > decisões foram tomadas**, para que qualquer pessoa ou assistente de IA que abra
 > esta pasta entenda rapidamente o estado atual e não quebre convenções.
-> Mantenha este arquivo atualizado ao fazer mudanças relevantes.
->
-> **Existe uma cópia idêntica em `CLAUDE.md`** (que o Claude Code lê automaticamente).
-> Ao editar um, atualize o outro.
 
 ---
 
