@@ -103,7 +103,7 @@ alternando o lado de origem (zigue-zague esquerda/direita):
 - Automação de Cortes: `https://pay.kiwify.com.br/1YQ9fto`
 
 ### Preços exibidos no site (desde 2026-07-19)
-- Vídeos **R$ 597** · Cortes **R$ 250** — pagamento único, garantia de 7 dias.
+- Vídeos **R$ 597** · Cortes **R$ 597** — pagamento único, garantia de 7 dias.
 - Aparecem nos painéis da home (`.panel-price`, cor do card) e no hero + CTA final das
   páginas de produto (`.v-price`, cor do accent). Ao mudar preço na Kiwify, atualizar aqui.
 - Desde 2026-07-19 o produto Vídeos (v2.2) tem modo inglês e opção sem legenda — anunciado
