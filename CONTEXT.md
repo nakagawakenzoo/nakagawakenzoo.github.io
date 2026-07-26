@@ -89,8 +89,10 @@ alternando o lado de origem (zigue-zague esquerda/direita):
    Badge "Indicação". Link com parâmetro `indicacao` que **NÃO pode ser alterado**.
 2. **Aeternum — Hoje na História** (`rose`, direita) — jogo autoral, **gratuito**, jogável no
    navegador. Badge "Indicação". Link com UTM de campanha. https://playaeternum.com/
-3. **Automação de Cortes** (`violet`, esquerda) — CTA "Ver como funciona" → `automacao-de-cortes.html`.
-4. **Automação de Vídeos** (`green`, direita) — CTA "Ver como funciona" → `automacao-de-videos.html`.
+3. **Automação de Cortes** (`violet`, esquerda) — **Em breve** (`panel-soon`, vendas pausadas).
+   Botão "Em breve · conheça a trilha" → `automacao-de-cortes.html`.
+4. **Automação de Vídeos** (`green`, direita) — **Em breve** (`panel-soon`, vendas pausadas).
+   Botão "Em breve · conheça a trilha" → `automacao-de-videos.html`.
 5. **Salesforce Marketing Cloud** (`blue`, esquerda) — **Em breve** (`panel-soon`): botão
    desabilitado + "Me avise no lançamento" (mailto).
 
@@ -102,12 +104,17 @@ alternando o lado de origem (zigue-zague esquerda/direita):
 - Automação de Vídeos: `https://pay.kiwify.com.br/Uu09KDB`
 - Automação de Cortes: `https://pay.kiwify.com.br/1YQ9fto`
 
-### Preços exibidos no site (desde 2026-07-19)
-- Vídeos **R$ 597** · Cortes **R$ 597** — pagamento único, garantia de 7 dias.
-- Aparecem nos painéis da home (`.panel-price`, cor do card) e no hero + CTA final das
-  páginas de produto (`.v-price`, cor do accent). Ao mudar preço na Kiwify, atualizar aqui.
-- Desde 2026-07-19 o produto Vídeos (v2.2) tem modo inglês e opção sem legenda — anunciado
-  no bullet do painel da home e num card "Português ou inglês" em "O que você recebe".
+### Modelo de venda — TRILHA (vendas pausadas)
+- As vendas diretas na Kiwify foram **pausadas** por causa de fraude de reembolso
+  (comprar → baixar os arquivos → estornar nos 7 dias para ficar com a ferramenta).
+- Novo formato: **trilha de 7 dias de aulas de automação com N8N**; a **ferramenta pronta**
+  (fluxo + instalador) é liberada como **BÔNUS só no 8º dia** — depois da janela de reembolso
+  de 7 dias, o que neutraliza o golpe.
+- Por isso os cards de Vídeos e Cortes estão **"Em breve"** (sem preço exibido) e as páginas de
+  detalhe foram reescritas em torno da trilha + bônus (seção `#trilha`), com CTA de **lista de
+  espera** (`mailto`) no lugar do botão de compra. Os links Kiwify ficam guardados em comentário
+  HTML para reabertura. Preços de referência anteriores: Vídeos R$ 597 · Cortes R$ 597.
+- O produto Vídeos tem modo inglês e opção sem legenda (card "Português ou inglês").
 
 As páginas de detalhe descrevem o pipeline real das automações (vindo de fluxos n8n),
 mas **de forma genérica** — sem expor chaves de API, IDs de credencial, caminhos de
