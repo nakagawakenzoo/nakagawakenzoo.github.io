@@ -130,11 +130,13 @@ arquivo, voice IDs ou nomes de canal.
 
 ## 7. Outras seções
 
-- **Link-in-bio**: os canais (TikTok, YouTube, Kick, Instagram) ficam como **ícones no header**.
+- **Link-in-bio**: os canais (TikTok, YouTube, Kick, Instagram, Discord) ficam como **ícones no header**.
 - **Pop-up de lojas** (afiliado): sobe ao passar da **metade** da página; oferece Amazon,
   Mercado Livre e Shopee. Fecha no X ou Esc; não reaparece na sessão (`sessionStorage`).
 - **Comunidade no Discord**: bloco de destaque na home e nas duas páginas de produto, +
-  item em "O que você recebe". **Ainda SEM link de convite** (TODO) — vira botão quando houver.
+  item em "O que você recebe". Link de convite: `https://discord.gg/aJTsQ9AXE` (já é o
+  **ícone do Discord no header**). Os blocos de comunidade ainda **não são botões
+  clicáveis** (TODO) — podem virar botão com esse convite.
 - **Apoio via Pix** (footer da home): chave `kenzo.nakagawa03@gmail.com` com botão "Copiar".
 - **Termos de Uso** (`termos.html`): linkado no footer de todas as páginas.
 
@@ -170,7 +172,8 @@ arquivo, voice IDs ou nomes de canal.
 
 ## 10. Pendências / TODO
 
-- [ ] **Link de convite do Discord** (transformar os blocos de comunidade em botão).
+- [ ] **Blocos de comunidade viram botão** com o convite `https://discord.gg/aJTsQ9AXE`
+      (o ícone do Discord no header já usa esse link).
 - [ ] **Imagens** em `assets/`: `perfil.jpg` e as capas dos produtos (hoje há
       placeholders/anéis). Ver `assets/LEIA-ME.md`. (`og-cover.jpg` feita em 2026-07-19.)
 - [x] ~~Meta `og:image`~~ — `og-cover.jpg` criada e og:url/og:image da home corrigidos (2026-07-19).
