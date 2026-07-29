@@ -86,7 +86,8 @@ Os produtos são **painéis largos sangrados com corte diagonal** (`clip-path`),
 alternando o lado de origem (zigue-zague esquerda/direita):
 
 1. **Curso AUVP** (`yellow`, esquerda) — afiliado do Raul Sena (Investidor Sardinha).
-   Badge "Indicação". Link com parâmetro `indicacao` que **NÃO pode ser alterado**.
+   Badge "Indicação". Link de desconto: `https://sard.ink/AUVP-Desenvolvimento` (dá desconto
+   na matrícula). Substituiu o antigo link `form.auvp.com.br/...indicacao=...`.
 2. **Aeternum — Hoje na História** (`rose`, direita) — jogo autoral, **gratuito**, jogável no
    navegador. Badge "Indicação". Link com UTM de campanha. https://playaeternum.com/
 3. **Automação de Cortes** (`violet`, esquerda) — **Em breve** (`panel-soon`, vendas pausadas).
@@ -110,10 +111,11 @@ alternando o lado de origem (zigue-zague esquerda/direita):
 - Novo formato: **trilha de 7 dias de aulas de automação com N8N**; a **ferramenta pronta**
   (fluxo + instalador) é liberada como **BÔNUS só no 8º dia** — depois da janela de reembolso
   de 7 dias, o que neutraliza o golpe.
-- Por isso os cards de Vídeos e Cortes estão **"Em breve"** (sem preço exibido) e as páginas de
-  detalhe foram reescritas em torno da trilha + bônus (seção `#trilha`), com CTA de **lista de
-  espera** (`mailto`) no lugar do botão de compra. Os links Kiwify ficam guardados em comentário
-  HTML para reabertura. Preços de referência anteriores: Vídeos R$ 597 · Cortes R$ 597.
+- Por isso os cards de Vídeos e Cortes estão **"Em breve"** (com **R$ 597** exibido como âncora
+  de pré-lançamento, sem botão de compra) e as páginas de detalhe foram reescritas em torno da
+  trilha + bônus (seção `#trilha`), com CTA de **lista de espera** (`mailto`) no lugar do botão
+  de compra. Os links Kiwify ficam guardados em comentário HTML para reabertura. Preço: **R$ 597**
+  (`.panel-price` na home, `.v-price` nas páginas; nota "trilha + ferramenta bônus").
 - O produto Vídeos tem modo inglês e opção sem legenda (card "Português ou inglês").
 
 As páginas de detalhe descrevem o pipeline real das automações (vindo de fluxos n8n),
