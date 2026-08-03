@@ -306,3 +306,15 @@
   .v-grid:not(.v-grid-4) { grid-template-columns: repeat(3, 1fr); }
   .v-grid-4 > * { flex: 1 1 158px; max-width: 210px; }
 }
+
+/* ---- Exemplo real (prova social) ---- */
+.v-exemplo { display: flex; justify-content: center; margin-top: 24px; }
+.v-exemplo video {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  background: #000;
+}
+.v-exemplo-wide video { max-width: 760px; }
+.v-exemplo-vertical video { max-width: 320px; max-height: 570px; }

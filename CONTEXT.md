@@ -188,8 +188,11 @@ arquivo, voice IDs ou nomes de canal.
 - [x] ~~Meta `og:image`~~ — `og-cover.jpg` criada e og:url/og:image da home corrigidos (2026-07-19).
 - [ ] **GoatCounter**: criar conta gratuita em goatcounter.com com o código `kenzonakagawa`
       e descomentar o script nas 4 páginas (snippet já está lá, comentado).
-- [ ] **Prova social**: escolher 1 vídeo real gerado por cada automação e embutir nas
-      páginas de produto (aumenta conversão mais que qualquer texto).
+- [x] ~~Prova social~~ — vídeos reais embutidos nas 2 páginas (seção `#exemplo`, antes
+      da `#trilha`): `assets/exemplo-cortes.mp4` (Short 45s, 1,5 MB) e
+      `assets/exemplo-videos.mp4` (trecho de 75s em 720p, ~17 MB — o original de 9 min
+      tinha 168 MB, acima do limite de 100 MB do GitHub). `preload="metadata"` + poster
+      jpg = a página segue leve; o vídeo só baixa no play (2026-08-03).
 - [ ] **Salesforce Marketing Cloud**: sair de "Em breve" quando lançar (tem CTA de compra a criar).
 - [ ] **Revisão jurídica** dos Termos (Seções 8 e 9) e, se abrir **MEI/CNPJ**, trocar a
       identificação do fornecedor de CPF para CNPJ.
