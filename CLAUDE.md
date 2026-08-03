@@ -90,10 +90,11 @@ alternando o lado de origem (zigue-zague esquerda/direita):
    na matrícula). Substituiu o antigo link `form.auvp.com.br/...indicacao=...`.
 2. **Aeternum — Hoje na História** (`rose`, direita) — jogo autoral, **gratuito**, jogável no
    navegador. Badge "Indicação". Link com UTM de campanha. https://playaeternum.com/
-3. **Automação de Cortes** (`violet`, esquerda) — **Em breve** (`panel-soon`, vendas pausadas).
-   Botão "Em breve · conheça a trilha" → `automacao-de-cortes.html`.
-4. **Automação de Vídeos** (`green`, direita) — **Em breve** (`panel-soon`, vendas pausadas).
-   Botão "Em breve · conheça a trilha" → `automacao-de-videos.html`.
+3. **Automação de Cortes** (`violet`, esquerda) — **vendas ABERTAS** (trilha). Badge
+   "Vendas abertas"; botão "Conhecer a trilha" → `automacao-de-cortes.html` (que converte
+   para o checkout Kiwify).
+4. **Automação de Vídeos** (`green`, direita) — **vendas ABERTAS** (trilha). Badge
+   "Vendas abertas"; botão "Conhecer a trilha" → `automacao-de-videos.html`.
 5. **Salesforce Marketing Cloud** (`blue`, esquerda) — **Em breve** (`panel-soon`): botão
    desabilitado + "Me avise no lançamento" (mailto).
 
@@ -105,17 +106,16 @@ alternando o lado de origem (zigue-zague esquerda/direita):
 - Automação de Vídeos: `https://pay.kiwify.com.br/Uu09KDB`
 - Automação de Cortes: `https://pay.kiwify.com.br/1YQ9fto`
 
-### Modelo de venda — TRILHA (vendas pausadas)
-- As vendas diretas na Kiwify foram **pausadas** por causa de fraude de reembolso
-  (comprar → baixar os arquivos → estornar nos 7 dias para ficar com a ferramenta).
-- Novo formato: **trilha de 7 dias de aulas de automação com N8N**; a **ferramenta pronta**
-  (fluxo + instalador) é liberada como **BÔNUS só no 8º dia** — depois da janela de reembolso
-  de 7 dias, o que neutraliza o golpe.
-- Por isso os cards de Vídeos e Cortes estão **"Em breve"** (com **R$ 597** exibido como âncora
-  de pré-lançamento, sem botão de compra) e as páginas de detalhe foram reescritas em torno da
-  trilha + bônus (seção `#trilha`), com CTA de **lista de espera** (`mailto`) no lugar do botão
-  de compra. Os links Kiwify ficam guardados em comentário HTML para reabertura. Preço: **R$ 597**
-  (`.panel-price` na home, `.v-price` nas páginas; nota "trilha + ferramenta bônus").
+### Modelo de venda — TRILHA (vendas REATIVADAS em 03/08/2026)
+- Formato: **trilha de aulas de automação com N8N** liberadas 1/dia na Kiwify (drip); a
+  **ferramenta pronta** (fluxo + instalador) é liberada como **BÔNUS no 8º dia** — depois
+  da janela de arrependimento de 7 dias, o que neutraliza o golpe do reembolso (comprar →
+  baixar → estornar). A área de membros na Kiwify já está montada nesse formato.
+- Vendas REATIVADAS: as duas páginas de detalhe têm CTA direto pro checkout Kiwify
+  ("Entrar na trilha agora", `target="_blank"`), com a nota de transparência "acesso
+  imediato à trilha; ferramenta bônus no 8º dia" (obrigatória ANTES da compra). A antiga
+  **lista de espera por mailto foi desativada** (interessados notificados por e-mail em
+  agosto/2026). Preço: **R$ 597** (`.panel-price` na home, `.v-price` nas páginas).
 - O produto Vídeos tem modo inglês e opção sem legenda (card "Português ou inglês").
 
 As páginas de detalhe descrevem o pipeline real das automações (vindo de fluxos n8n),
@@ -198,4 +198,4 @@ arquivo, voice IDs ou nomes de canal.
 
 ---
 
-_Última atualização deste contexto: 2026-07-19._
+_Última atualização deste contexto: 2026-08-03._
