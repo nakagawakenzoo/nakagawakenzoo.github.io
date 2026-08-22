@@ -297,6 +297,59 @@
       </ul>
     </section>
 
+    <!-- ============ FAQ ============ -->
+    <section class="v-section" id="faq">
+      <div class="v-section-head">
+        <h2 class="section-title">FAQ</h2>
+        <p class="section-sub">Perguntas frequentes sobre a Automação de Vídeos.</p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Preciso saber programar?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer"><p>Não. A trilha ensina passo a passo, e você ainda recebe manual em PDF, instalador automático e aula de configuração em vídeo.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Funciona no meu computador?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer"><p>Sim. Funciona em Windows, macOS e Linux, com o n8n rodando no seu computador.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Tem custo além do produto?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer"><p>Sim. As ferramentas de IA usadas pela automação custam cerca de US$ 14/mês; os bancos de vídeo e música são gratuitos.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Quando recebo a ferramenta pronta?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer"><p>No 8º dia. A trilha libera 1 aula por dia durante 7 dias; a ferramenta pronta (fluxo + instalador) é liberada como bônus no dia seguinte.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Tem garantia?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer"><p>Sim, 7 dias — padrão da Kiwify.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>A renda é garantida?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer"><p>Não. O resultado depende da sua consistência e das regras das plataformas.</p></div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ CTA FINAL ============ -->
     <section class="v-cta">
       <h2>Aprenda a dominar a automação.<br>Ganhe a ferramenta de bônus.</h2>
@@ -318,15 +371,6 @@
     <p class="footer-copy">© <span id="year"></span> Kenzo Nakagawa. Todos os direitos reservados.</p>
   </footer>
 
-  <script>
-    // header com blur ao rolar + ano dinâmico (página leve, sem dependências)
-    (function () {
-      var header = document.getElementById("header");
-      function onScroll() { header.classList.toggle("scrolled", window.scrollY > 8); }
-      window.addEventListener("scroll", onScroll, { passive: true });
-      onScroll();
-      document.getElementById("year").textContent = new Date().getFullYear();
-    })();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

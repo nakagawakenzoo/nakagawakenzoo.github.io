@@ -33,6 +33,12 @@
 [data-accent="blue"]   { --card: #38bdf8; --card-soft: #7dd3fc; --card-contrast: #0d0b14; --card-glow: rgba(56, 189, 248, 0.35); }
 [data-accent="rose"]   { --card: #f43f5e; --card-soft: #fb7185; --card-contrast: #0d0b14; --card-glow: rgba(244, 63, 94, 0.35); }
 
+/* Cores dos blocos de links (mesmo mecanismo: o JS copia --card* para --accent*) */
+[data-accent="cyan"]   { --card: #22d3ee; --card-soft: #67e8f9; --card-contrast: #0d0b14; --card-glow: rgba(34, 211, 238, 0.35); }  /* TikTok */
+[data-accent="red"]    { --card: #ef4444; --card-soft: #f87171; --card-contrast: #0d0b14; --card-glow: rgba(239, 68, 68, 0.35); }   /* YouTube */
+[data-accent="pink"]   { --card: #ec4899; --card-soft: #f472b6; --card-contrast: #0d0b14; --card-glow: rgba(236, 72, 153, 0.35); }  /* Instagram */
+[data-accent="indigo"] { --card: #6366f1; --card-soft: #818cf8; --card-contrast: #0d0b14; --card-glow: rgba(99, 102, 241, 0.35); }  /* Discord */
+
 /* ============ Reset básico ============ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -143,34 +149,6 @@ a { color: var(--accent-soft); transition: color 0.4s ease; }
 }
 
 .brand-accent { color: var(--accent); transition: color 0.4s ease; }
-
-.header-social {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.header-social a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  color: var(--text-body);
-  transition: color 0.4s ease, background-color 0.3s ease, transform 0.2s ease;
-}
-
-.header-social svg {
-  width: 19px;
-  height: 19px;
-}
-
-.header-social a:hover {
-  color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 12%, transparent);
-  transform: translateY(-1px);
-}
 
 /* ============ Hero ============ */
 .hero {
@@ -400,18 +378,11 @@ a { color: var(--accent-soft); transition: color 0.4s ease; }
 
 /* ============ Produtos — painéis sangrados diagonais ============ */
 .section-products {
-  padding: 3.5rem 0 1rem;
+  padding: clamp(2.5rem, 6vw, 4.5rem) 0 1rem;
   overflow: hidden; /* segura o sangramento e a animação de slide */
 }
 
-.products-head {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 0 1.25rem;
-}
-
 .panels {
-  margin-top: 2.5rem;
   display: flex;
   flex-direction: column;
   gap: clamp(2rem, 5vw, 4rem);
@@ -570,185 +541,104 @@ a { color: var(--accent-soft); transition: color 0.4s ease; }
   background: color-mix(in srgb, var(--card) 10%, transparent);
 }
 
-/* ============ Pop-up de lojas (afiliado) ============ */
-.stores-popup {
-  position: fixed;
-  left: 50%;
-  bottom: 1rem;
-  z-index: 150;
-  width: min(92vw, 440px);
-  transform: translate(-50%, 160%);
-  background: rgba(20, 16, 31, 0.92);
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
-  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
-  border-radius: 18px;
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5), 0 0 30px var(--accent-glow);
-  padding: 1.25rem 1.25rem 1.35rem;
-  opacity: 0;
-  visibility: hidden;
-  transition: transform 0.5s cubic-bezier(.22,.61,.36,1), opacity 0.4s ease,
-              visibility 0s linear 0.5s, border-color 0.4s ease, box-shadow 0.4s ease;
+/* ============ Links — fragmentos pequenos em fileira (mesma linguagem facetada dos painéis) ============ */
+.section-links {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
 }
 
-.stores-popup.show {
-  transform: translate(-50%, 0);
-  opacity: 1;
-  visibility: visible;
-  transition: transform 0.5s cubic-bezier(.22,.61,.36,1), opacity 0.4s ease,
-              border-color 0.4s ease, box-shadow 0.4s ease;
+.tiles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.8rem, 2.4vw, 1.25rem);
 }
 
-.stores-close {
+/* Cada bloco: quadrado facetado com aresta + glow na cor da rede (mesma receita do .panel) */
+.tile {
+  position: relative;
+  width: clamp(92px, 26vw, 124px);
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.5rem 0.45rem;
+  color: var(--text);
+  text-decoration: none;
+  filter: drop-shadow(0 10px 28px var(--card-glow));
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.tile::before,
+.tile::after {
+  content: "";
   position: absolute;
-  top: 0.6rem;
-  right: 0.6rem;
+  inset: 0;
+  clip-path: var(--clip);
+}
+
+.tile::before { background: var(--card); }
+.tile::after {
+  inset: 2px;
+  background: linear-gradient(145deg,
+    color-mix(in srgb, var(--card) 10%, var(--bg-card)), var(--bg-card) 65%);
+}
+
+/* "Mordidas" diferentes em cada bloco, alternando o lado da rachadura */
+.tiles .tile:nth-child(1) { --clip: polygon(0 5%, 100% 0, 100% 96%, 5% 100%, 0 62%, 9% 50%, 0 36%); }
+.tiles .tile:nth-child(2) { --clip: polygon(0 0, 95% 0, 100% 34%, 91% 48%, 100% 64%, 96% 100%, 0 96%); }
+.tiles .tile:nth-child(3) { --clip: polygon(10% 0, 100% 3%, 96% 100%, 0 97%, 0 58%, 8% 46%, 0 32%); }
+.tiles .tile:nth-child(4) { --clip: polygon(0 2%, 100% 0, 100% 40%, 92% 52%, 100% 66%, 90% 100%, 3% 100%); }
+.tiles .tile:nth-child(5) { --clip: polygon(0 0, 96% 4%, 100% 100%, 8% 100%, 0 70%, 7% 56%, 0 42%); }
+
+.tile-ic {
+  position: relative;
+  z-index: 2;
   width: 30px;
   height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  border-radius: 8px;
-  background: transparent;
-  color: var(--text-dim);
-  cursor: pointer;
-  transition: color 0.2s ease, background-color 0.2s ease;
+  color: var(--card);
+  transition: transform 0.3s ease;
 }
 
-.stores-close:hover { color: var(--text); background: rgba(255, 255, 255, 0.06); }
-.stores-close svg { width: 16px; height: 16px; }
+.tile-ic svg { width: 100%; height: 100%; }
 
-.stores-title {
-  color: var(--text);
-  font-weight: 700;
-  font-size: 0.9rem;
-  letter-spacing: 0.02em;
-  text-align: center;
-  margin: 0.2rem 1.5rem 1rem;
-  line-height: 1.4;
-}
-
-.stores-icons {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.6rem;
-}
-
-.store-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.75rem 0.4rem;
-  background: var(--bg-card);
-  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
-  border-radius: 12px;
-  color: var(--text);
-  font-weight: 600;
-  font-size: 0.72rem;
-  text-align: center;
-  text-decoration: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-}
-
-.store-btn svg {
-  width: 22px;
-  height: 22px;
-  color: var(--accent);
-  transition: color 0.4s ease;
-}
-
-.store-btn:hover {
-  border-color: color-mix(in srgb, var(--accent) 60%, transparent);
-  box-shadow: 0 0 16px var(--accent-glow);
-  transform: translateY(-2px);
-}
-
-/* CTA do grupo de ofertas no Telegram (largura total, abaixo das lojas) */
-.stores-telegram {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  margin-top: 0.75rem;
-  padding: 0.8rem 1rem;
-  background: var(--accent);
-  color: var(--accent-contrast);
-  border-radius: 12px;
-  text-decoration: none;
-  transition: background-color 0.4s ease, box-shadow 0.3s ease, transform 0.2s ease;
-}
-
-.stores-telegram svg {
-  width: 24px;
-  height: 24px;
-  flex: none;
-}
-
-.stores-telegram-text {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  line-height: 1.25;
-}
-
-.stores-telegram strong {
-  font-size: 0.88rem;
+.tile-name {
+  position: relative;
+  z-index: 2;
+  font-size: 0.64rem;
   font-weight: 800;
-  letter-spacing: 0.02em;
-}
-
-.stores-telegram small {
-  font-size: 0.7rem;
-  font-weight: 600;
-}
-
-.stores-telegram:hover {
-  box-shadow: 0 0 22px var(--accent-glow);
-  transform: translateY(-2px);
-}
-
-/* ============ Como funciona ============ */
-.steps-grid {
-  margin-top: 1.75rem;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
-}
-
-.step {
-  background: var(--bg-raise);
-  border: 1px solid color-mix(in srgb, var(--accent) 15%, transparent);
-  border-radius: var(--radius-card);
-  padding: 1.4rem;
-  transition: border-color 0.4s ease;
-}
-
-.step-icon {
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 12%, transparent);
-  transition: color 0.4s ease, background-color 0.4s ease;
-  margin-bottom: 0.9rem;
-}
-
-.step-icon svg { width: 22px; height: 22px; }
-
-.step-title {
-  color: var(--text);
-  font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  margin-bottom: 0.4rem;
+  text-align: center;
+  line-height: 1.2;
 }
 
-.step-desc { font-size: 0.9rem; }
+/* Entrada em cascata ao carregar (fill backwards: depois da animação o hover volta a valer) */
+@keyframes tileIn {
+  from { opacity: 0; transform: translateY(14px) scale(0.96); }
+  to   { opacity: 1; transform: none; }
+}
+
+.js .tile { animation: tileIn 0.6s cubic-bezier(.22,.61,.36,1) backwards; }
+.js .tiles .tile:nth-child(2) { animation-delay: 0.07s; }
+.js .tiles .tile:nth-child(3) { animation-delay: 0.14s; }
+.js .tiles .tile:nth-child(4) { animation-delay: 0.21s; }
+.js .tiles .tile:nth-child(5) { animation-delay: 0.28s; }
+
+/* Hover/foco: sobe, glow mais forte e o ícone cresce */
+.tile:hover,
+.tile:focus-visible {
+  transform: translateY(-4px);
+  filter: drop-shadow(0 14px 34px var(--card-glow)) drop-shadow(0 0 16px var(--card-glow));
+}
+
+.tile:hover .tile-ic,
+.tile:focus-visible .tile-ic { transform: scale(1.12); }
+
+.tile:focus-visible { outline-offset: -3px; }
 
 /* ============ FAQ ============ */
 .faq-list {
@@ -967,7 +857,6 @@ a { color: var(--accent-soft); transition: color 0.4s ease; }
 
 /* ============ Desktop ============ */
 @media (min-width: 820px) {
-  .steps-grid { grid-template-columns: repeat(3, 1fr); }
   .hero { padding-top: calc(var(--header-h) + 3.5rem); }
 }
 

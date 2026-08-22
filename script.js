@@ -1,4 +1,4 @@
-/* Kenzo Nakagawa — landing + link-in-bio */
+/* Kenzo Nakagawa — landing + link-in-bio (usado na home e nas páginas de produto) */
 (function () {
   "use strict";
 
@@ -34,15 +34,23 @@
       { rootMargin: "-35% 0px -35% 0px", threshold: 0.01 }
     );
     panels.forEach(function (panel) { observer.observe(panel); });
+
+    // Painel que já está dentro da tela no carregamento aparece sem precisar rolar
+    // (a cor da página continua sendo definida só pela faixa central, acima)
+    var vh = window.innerHeight;
+    panels.forEach(function (panel) {
+      if (panel.getBoundingClientRect().top < vh) panel.classList.add("in");
+    });
   } else {
     // Sem IntersectionObserver: mostra tudo
     panels.forEach(function (panel) { panel.classList.add("in"); });
   }
 
-  // Desktop: passar o mouse por um painel também muda a cor da página
+  // Desktop: passar o mouse por um painel (ou por um bloco de link) também muda a cor da página
+  var tiles = Array.prototype.slice.call(document.querySelectorAll(".tile[data-accent]"));
   if (window.matchMedia("(hover: hover)").matches) {
-    panels.forEach(function (panel) {
-      panel.addEventListener("pointerenter", function () { setAccentFrom(panel); });
+    panels.concat(tiles).forEach(function (el) {
+      el.addEventListener("pointerenter", function () { setAccentFrom(el); });
     });
   }
 
@@ -56,7 +64,7 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* ============ FAQ: accordion ============ */
+  /* ============ FAQ: accordion (páginas de produto) ============ */
   document.querySelectorAll(".faq-question").forEach(function (btn) {
     btn.addEventListener("click", function () {
       var item = btn.parentElement;
@@ -77,49 +85,6 @@
       answer.style.maxHeight = isOpen ? "0" : answer.scrollHeight + "px";
     });
   });
-
-  /* ============ Pop-up de lojas ao chegar no meio da página ============ */
-  var popup = document.getElementById("storesPopup");
-  var closeBtn = document.getElementById("storesClose");
-
-  if (popup && closeBtn) {
-    var dismissed = false;
-    try { dismissed = sessionStorage.getItem("storesPopupClosed") === "1"; } catch (e) {}
-
-    function hidePopup() {
-      popup.classList.remove("show");
-      popup.setAttribute("aria-hidden", "true");
-    }
-
-    function showPopup() {
-      if (dismissed) return;
-      popup.classList.add("show");
-      popup.setAttribute("aria-hidden", "false");
-    }
-
-    closeBtn.addEventListener("click", function () {
-      dismissed = true;
-      try { sessionStorage.setItem("storesPopupClosed", "1"); } catch (e) {}
-      hidePopup();
-    });
-
-    // Fecha com ESC
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") hidePopup();
-    });
-
-    // Dispara quando o scroll passa da metade da página
-    function checkMiddle() {
-      if (dismissed) return;
-      var scrollable = document.documentElement.scrollHeight - window.innerHeight;
-      if (scrollable <= 0 || window.scrollY >= scrollable * 0.5) {
-        showPopup();
-        window.removeEventListener("scroll", checkMiddle);
-      }
-    }
-    window.addEventListener("scroll", checkMiddle, { passive: true });
-    checkMiddle();
-  }
 
   /* ============ Efeito de digitação do Tèknolōdiæ ============ */
   var typed = document.querySelector(".hero-bio .typed");

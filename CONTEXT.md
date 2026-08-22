@@ -42,9 +42,9 @@ Site pessoal de **Kenzo Nakagawa** que cumpre dois papéis:
 
 | Arquivo | Papel |
 |---|---|
-| `index.html` | Home: header, hero, produtos (painéis diagonais), como funciona, comunidade, FAQ, disclaimer, footer (com apoio Pix). |
-| `styles.css` | Folha principal: tokens (CSS custom properties), sistema de cores, header, hero + animações, painéis, FAQ, comunidade, Pix, footer. |
-| `script.js` | JS da home: sistema de cor por produto, blur do header, FAQ accordion, digitação do hero, pop-up de lojas, copiar Pix, ano dinâmico. |
+| `index.html` | Home: header (só a marca), hero, **blocos de links** (fragmentos quadrados: Telegram/TikTok/YouTube/Instagram/Discord), produtos (painéis diagonais), disclaimer, footer (com apoio Pix). |
+| `styles.css` | Folha principal: tokens (CSS custom properties), sistema de cores, header, hero + animações, painéis, blocos de links (`.tile`), FAQ, comunidade, Pix, footer. |
+| `script.js` | JS compartilhado (home + páginas de produto): sistema de cor por produto, blur do header, FAQ accordion, digitação do hero, copiar Pix, ano dinâmico. Tudo guardado por `if` — cada página usa só o que tem. |
 | `automacao-de-videos.html` | Página de detalhe do produto "Automação de Vídeos" (acento verde). |
 | `automacao-de-cortes.html` | Página de detalhe do produto "Automação de Cortes" (acento violeta). |
 | `produto.css` | Estilos compartilhados das páginas de produto (hero, timeline, grids, CTA). Acento definido por classe no `<body>` (`page-video` / `page-cortes`). |
@@ -73,10 +73,19 @@ Tema **dark fixo**; a cor de destaque muda conforme o produto com que o visitant
 | `yellow` | Curso AUVP | `#facc15` |
 | `blue` | Salesforce Marketing Cloud | `#38bdf8` |
 | `rose` | Aeternum (jogo) | `#f43f5e` |
+| `cyan` | bloco TikTok | `#22d3ee` |
+| `red` | bloco YouTube | `#ef4444` |
+| `pink` | bloco Instagram | `#ec4899` |
+| `indigo` | bloco Discord | `#6366f1` |
+| `blue` | bloco Grupo de ofertas (Telegram) — reaproveita o azul | `#38bdf8` |
 
 - Padrão inicial da página: **violeta**.
 - `script.js` copia os `--card*` do painel ativo para os `--accent*` globais quando o
   painel entra na viewport (IntersectionObserver) ou no hover (desktop). Transição ~400ms.
+- Os **blocos de links** (`.tile[data-accent]`) só trocam a cor **no hover** (desktop) — não
+  entram no IntersectionObserver (cinco blocos na mesma faixa trocariam a cor sem parar).
+- Painéis que já estão dentro da tela no carregamento recebem `.in` na hora (sem esperar a
+  faixa central), para o primeiro painel não ficar invisível logo abaixo dos blocos de links.
 
 ---
 
@@ -139,16 +148,24 @@ arquivo, voice IDs ou nomes de canal.
 
 ## 7. Outras seções
 
-- **Link-in-bio**: os canais (TikTok, YouTube, Kick, Instagram, Discord) ficam como **ícones no header**.
-- **Pop-up de lojas** (afiliado): sobe ao passar da **metade** da página; oferece Amazon,
-  Mercado Livre e Shopee, + CTA de largura total **"Entrar no grupo de ofertas"** →
-  grupo de ofertas no Telegram `https://t.me/ofertasdokenzo` (classe `.stores-telegram`,
-  fundo `--accent`, adicionado em 2026-08-22). Fecha no X ou Esc; não reaparece na sessão
-  (`sessionStorage`).
-- **Comunidade no Discord**: bloco de destaque na home e nas duas páginas de produto, +
-  item em "O que você recebe". Link de convite: `https://discord.gg/aJTsQ9AXE` (já é o
-  **ícone do Discord no header**). Os blocos de comunidade ainda **não são botões
-  clicáveis** (TODO) — podem virar botão com esse convite.
+- **Link-in-bio = blocos de links** (reestruturação de 2026-08-22, a partir de um rascunho do
+  Kenzo): logo abaixo do hero, uma **fileira de fragmentos quadrados** (`.tiles > a.tile`),
+  mesma receita visual dos painéis (`::before` = aresta na cor, `::after` = fundo, `clip-path`
+  com "mordidas" diferentes em cada bloco via `:nth-child`, glow). Ordem: **Grupo de ofertas
+  (Telegram)** `https://t.me/ofertasdokenzo` → TikTok → YouTube → Instagram → Discord
+  `https://discord.gg/aJTsQ9AXE`. No celular quebram em 3 + 2. O header ficou **só com a
+  marca** (os ícones sociais saíram de lá). **Kick foi removido** do site.
+- **Removidos da home em 2026-08-22**: título "Soluções" + subtítulo, seção "Como funciona",
+  bloco de comunidade, FAQ e o **pop-up de lojas** (Amazon/ML/Shopee + Telegram). Os links
+  de afiliado das lojas **não estão mais em lugar nenhum do site** — a porta de entrada das
+  ofertas passou a ser o grupo do Telegram.
+- **Comunidade no Discord**: bloco de destaque **só nas duas páginas de produto**, + item em
+  "O que você recebe". Os blocos ainda **não são botões clicáveis** (TODO) — podem virar
+  botão com o convite acima.
+- **FAQ**: **só nas páginas de produto** (seção `#faq`, entre "Requisitos honestos" e o CTA
+  final), 6 perguntas, com respostas alinhadas aos requisitos de cada produto (Cortes:
+  Windows 10/11 + OpenAI por uso; Vídeos: Win/mac/Linux + ~US$ 14/mês). O accordion vem do
+  `script.js`, que as páginas de produto passaram a carregar (substituiu o script inline).
 - **Apoio via Pix** (footer da home): chave `kenzo.nakagawa03@gmail.com` com botão "Copiar".
 - **Termos de Uso** (`termos.html`): linkado no footer de todas as páginas.
 
@@ -185,7 +202,7 @@ arquivo, voice IDs ou nomes de canal.
 ## 10. Pendências / TODO
 
 - [ ] **Blocos de comunidade viram botão** com o convite `https://discord.gg/aJTsQ9AXE`
-      (o ícone do Discord no header já usa esse link).
+      (o bloco de link do Discord na home já usa esse convite).
 - [ ] **Imagens** em `assets/`: `perfil.jpg` e as capas dos produtos (hoje há
       placeholders/anéis). Ver `assets/LEIA-ME.md`. (`og-cover.jpg` feita em 2026-07-19.)
 - [x] ~~Meta `og:image`~~ — `og-cover.jpg` criada e og:url/og:image da home corrigidos (2026-07-19).
