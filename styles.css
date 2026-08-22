@@ -665,6 +665,49 @@ a { color: var(--accent-soft); transition: color 0.4s ease; }
   transform: translateY(-2px);
 }
 
+/* CTA do grupo de ofertas no Telegram (largura total, abaixo das lojas) */
+.stores-telegram {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 0.75rem;
+  padding: 0.8rem 1rem;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: background-color 0.4s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.stores-telegram svg {
+  width: 24px;
+  height: 24px;
+  flex: none;
+}
+
+.stores-telegram-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  line-height: 1.25;
+}
+
+.stores-telegram strong {
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.stores-telegram small {
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.stores-telegram:hover {
+  box-shadow: 0 0 22px var(--accent-glow);
+  transform: translateY(-2px);
+}
+
 /* ============ Como funciona ============ */
 .steps-grid {
   margin-top: 1.75rem;

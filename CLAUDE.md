@@ -141,7 +141,10 @@ arquivo, voice IDs ou nomes de canal.
 
 - **Link-in-bio**: os canais (TikTok, YouTube, Kick, Instagram, Discord) ficam como **ícones no header**.
 - **Pop-up de lojas** (afiliado): sobe ao passar da **metade** da página; oferece Amazon,
-  Mercado Livre e Shopee. Fecha no X ou Esc; não reaparece na sessão (`sessionStorage`).
+  Mercado Livre e Shopee, + CTA de largura total **"Entrar no grupo de ofertas"** →
+  grupo de ofertas no Telegram `https://t.me/ofertasdokenzo` (classe `.stores-telegram`,
+  fundo `--accent`, adicionado em 2026-08-22). Fecha no X ou Esc; não reaparece na sessão
+  (`sessionStorage`).
 - **Comunidade no Discord**: bloco de destaque na home e nas duas páginas de produto, +
   item em "O que você recebe". Link de convite: `https://discord.gg/aJTsQ9AXE` (já é o
   **ícone do Discord no header**). Os blocos de comunidade ainda **não são botões
@@ -201,4 +204,4 @@ arquivo, voice IDs ou nomes de canal.
 
 ---
 
-_Última atualização deste contexto: 2026-08-03._
+_Última atualização deste contexto: 2026-08-22._
