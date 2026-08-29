@@ -172,13 +172,16 @@ arquivo, voice IDs ou nomes de canal.
   de `scrollLeft` fora de ponto de snap — por isso a animação é via requestAnimationFrame
   com o snap temporariamente em `none` (função `animateTo`). O box grande "Apoie" virou a
   linha `.pix-inline` no footer (mantidos os ids `copyPix`/`pixKey`).
-- **Link-in-bio = blocos de links** (reestruturação de 2026-08-22, a partir de um rascunho do
-  Kenzo): logo abaixo do hero, uma **fileira de fragmentos quadrados** (`.tiles > a.tile`),
-  mesma receita visual dos painéis (`::before` = aresta na cor, `::after` = fundo, `clip-path`
-  com "mordidas" diferentes em cada bloco via `:nth-child`, glow). Ordem: **Grupo de ofertas
-  (Telegram)** `https://t.me/ofertasdokenzo` → TikTok → YouTube → Instagram → Discord
-  `https://discord.gg/aJTsQ9AXE`. No celular quebram em 3 + 2. O header ficou **só com a
-  marca** (os ícones sociais saíram de lá). **Kick foi removido** do site.
+- **Link-in-bio = blocos de links** (2026-08-22, a partir de um rascunho do Kenzo): logo
+  abaixo do hero, uma **fileira de mini-cards arredondados** (`.tiles > a.tile`) com borda +
+  glow na cor da rede via `box-shadow`, mesma linguagem dos cards do carrossel. O formato
+  facetado original (`clip-path` + `filter: drop-shadow`) foi aposentado em **2026-08-29**:
+  essa combinação compõe um **retângulo preto** em volta dos blocos no Chrome/Windows, com o
+  glow cortado em bordas retas (feedback do Kenzo em vídeo) — não reintroduzir, e **nunca
+  clipar `.tiles` com overflow** (corta o glow). Ordem: **Grupo de ofertas (Telegram)**
+  `https://t.me/ofertasdokenzo` → TikTok → YouTube → Instagram → Discord
+  `https://discord.gg/aJTsQ9AXE`. Sempre numa fileira única (encolhem via `clamp`). O header
+  ficou **só com a marca** (os ícones sociais saíram de lá). **Kick foi removido** do site.
 - **Removidos da home em 2026-08-22**: título "Soluções" + subtítulo, seção "Como funciona",
   bloco de comunidade, FAQ e o **pop-up de lojas** (Amazon/ML/Shopee + Telegram). Os links
   de afiliado das lojas **não estão mais em lugar nenhum do site** — a porta de entrada das
