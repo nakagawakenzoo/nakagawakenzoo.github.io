@@ -19,9 +19,14 @@
   }
 
   var panels = Array.prototype.slice.call(document.querySelectorAll(".panel-row[data-accent]"));
+  var carTrack = document.getElementById("carTrack"); // só existe na home (carrossel)
 
-  if ("IntersectionObserver" in window) {
-    // Painel que entra na viewport: revela (slide) e assume a cor global
+  if (carTrack) {
+    // Home: os painéis são slides do carrossel — sempre visíveis; a cor global
+    // passa a ser definida pelo slide ativo (ver bloco do carrossel, abaixo).
+    panels.forEach(function (panel) { panel.classList.add("in"); });
+  } else if ("IntersectionObserver" in window) {
+    // Páginas com rolagem: painel que entra na viewport revela e assume a cor global
     var observer = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
@@ -52,6 +57,162 @@
     panels.concat(tiles).forEach(function (el) {
       el.addEventListener("pointerenter", function () { setAccentFrom(el); });
     });
+  }
+
+  /* ============ Carrossel de produtos (home) ============
+     Rolagem nativa + scroll-snap (swipe de graça no celular). O JS cuida de:
+     auto-avanço a cada AUTO_MS, setas ‹ ›, bolinhas, sincronizar a cor global
+     com o slide ativo e pausar quando o visitante interage. */
+  if (carTrack) {
+    var slides = Array.prototype.slice.call(carTrack.children);
+    var carBox = document.getElementById("carousel");
+    var dotsBox = document.getElementById("carDots");
+    var prefersReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    var AUTO_MS = 6000;    // intervalo do auto-avanço
+    var RESUME_MS = 12000; // volta a rodar sozinho X ms após a última interação
+    var current = 0;
+    var autoTimer = null;
+    var resumeTimer = null;
+
+    slides.forEach(function (slide, i) {
+      slide.setAttribute("role", "group");
+      slide.setAttribute("aria-roledescription", "slide");
+      slide.setAttribute("aria-label", (i + 1) + " de " + slides.length);
+    });
+
+    // Setas ‹ › (injetadas p/ não ficarem mortas sem JS)
+    function makeArrow(dir, label, path) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "car-arrow car-" + dir;
+      b.setAttribute("aria-label", label);
+      b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="' + path + '"/></svg>';
+      carBox.appendChild(b);
+      return b;
+    }
+    var prevBtn = makeArrow("prev", "Produto anterior", "15 18 9 12 15 6");
+    var nextBtn = makeArrow("next", "Próximo produto", "9 18 15 12 9 6");
+
+    // Bolinhas
+    var dots = slides.map(function (slide, i) {
+      var d = document.createElement("button");
+      d.type = "button";
+      d.className = "car-dot";
+      var title = slide.querySelector(".panel-title");
+      d.setAttribute("aria-label", "Ir para: " + (title ? title.textContent.trim() : "produto " + (i + 1)));
+      d.addEventListener("click", function () { goTo(i); interacted(); });
+      dotsBox.appendChild(d);
+      return d;
+    });
+
+    function setActive(i) {
+      current = i;
+      dots.forEach(function (d, j) { d.setAttribute("aria-current", j === i ? "true" : "false"); });
+      setAccentFrom(slides[i]);
+    }
+
+    // Animação própria com requestAnimationFrame. Não dá para usar
+    // scrollTo({behavior:"smooth"}) nem posições intermediárias com o snap
+    // ligado: com "x mandatory" o Chrome rebate qualquer posição fora de um
+    // ponto de snap. Então: snap OFF durante a animação, ON de volta no fim
+    // (o swipe manual continua com o snap nativo).
+    var animId = null;
+    function cancelAnim() {
+      if (animId) {
+        cancelAnimationFrame(animId);
+        animId = null;
+        carTrack.style.scrollSnapType = "";
+      }
+    }
+    function animateTo(left) {
+      cancelAnim();
+      var from = carTrack.scrollLeft;
+      var delta = left - from;
+      if (!delta) return;
+      carTrack.style.scrollSnapType = "none";
+      var DUR = 480;
+      var t0 = performance.now();
+      function step(now) {
+        var p = Math.min(1, (now - t0) / DUR);
+        var e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2; // easeInOutQuad
+        carTrack.scrollLeft = from + delta * e;
+        if (p < 1) {
+          animId = requestAnimationFrame(step);
+        } else {
+          animId = null;
+          carTrack.style.scrollSnapType = "";
+        }
+      }
+      animId = requestAnimationFrame(step);
+    }
+
+    function goTo(i, instant) {
+      var n = slides.length;
+      var target = ((i % n) + n) % n; // dá a volta nas pontas
+      var left = slides[target].offsetLeft - slides[0].offsetLeft;
+      if (instant || prefersReduce) {
+        cancelAnim();
+        carTrack.scrollLeft = left;
+      } else {
+        animateTo(left);
+      }
+      setActive(target);
+    }
+
+    // Swipe/rolagem manual: espera assentar e sincroniza bolinhas + cor
+    function syncToScroll() {
+      var i = Math.round(carTrack.scrollLeft / (carTrack.clientWidth || 1));
+      i = Math.max(0, Math.min(slides.length - 1, i));
+      if (i !== current) setActive(i);
+    }
+    var scrollDebounce = null;
+    carTrack.addEventListener("scroll", function () {
+      clearTimeout(scrollDebounce);
+      scrollDebounce = setTimeout(syncToScroll, 90);
+    }, { passive: true });
+    if ("onscrollend" in window) {
+      carTrack.addEventListener("scrollend", syncToScroll, { passive: true });
+    }
+
+    // Auto-avanço (não roda com prefers-reduced-motion; pula enquanto a aba está oculta)
+    function play() {
+      stop();
+      if (prefersReduce) return;
+      autoTimer = setInterval(function () {
+        if (!document.hidden) goTo(current + 1);
+      }, AUTO_MS);
+    }
+    function stop() {
+      if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+    }
+    function interacted() {
+      stop();
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(play, RESUME_MS);
+    }
+
+    prevBtn.addEventListener("click", function () { goTo(current - 1); interacted(); });
+    nextBtn.addEventListener("click", function () { goTo(current + 1); interacted(); });
+
+    // Pausa com mouse em cima / dedo arrastando / foco de teclado dentro do carrossel
+    // (arrastar/rolar também cancela a animação em andamento p/ não brigar com o dedo)
+    carBox.addEventListener("pointerenter", stop);
+    carBox.addEventListener("pointerleave", function () { clearTimeout(resumeTimer); play(); });
+    carTrack.addEventListener("pointerdown", function () { cancelAnim(); interacted(); }, { passive: true });
+    carTrack.addEventListener("wheel", function () { cancelAnim(); interacted(); }, { passive: true });
+    carBox.addEventListener("focusin", stop);
+    carBox.addEventListener("focusout", interacted);
+
+    // Janela mudou de tamanho: reancora o slide ativo (sem animação)
+    var resizeDebounce = null;
+    window.addEventListener("resize", function () {
+      clearTimeout(resizeDebounce);
+      resizeDebounce = setTimeout(function () { goTo(current, true); }, 120);
+    });
+
+    setActive(0);
+    play();
   }
 
   /* ============ Header: fundo translúcido com blur ao rolar ============ */

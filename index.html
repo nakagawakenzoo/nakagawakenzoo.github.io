@@ -32,7 +32,7 @@
        e então DESCOMENTAR a linha abaixo (nas 4 páginas). -->
   <!-- <script data-goatcounter="https://kenzonakagawa.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script> -->
 </head>
-<body>
+<body class="home">
 
   <a class="skip-link" href="#links">Pular para o conteúdo</a>
 
@@ -115,11 +115,10 @@
       </div>
     </section>
 
-    </section>
-
-    <!-- ============ PRODUTOS (painéis sangrados diagonais) ============ -->
-    <section class="section-products" id="produtos">
-      <div class="panels">
+    <!-- ============ PRODUTOS (carrossel de painéis facetados — 1 por vez, auto-avança) ============ -->
+    <section class="section-products" id="produtos" aria-roledescription="carrossel" aria-label="Produtos e indicações">
+      <div class="carousel" id="carousel">
+      <div class="panels" id="carTrack">
 
         <!-- 1. Curso AUVP — sai da ESQUERDA [AMARELO] -->
         <article class="panel-row panel-left" data-accent="yellow">
@@ -175,7 +174,7 @@
                 <li>Transcrição grátis no seu PC (opcional)</li>
                 <li>Comunidade no Discord</li>
               </ul>
-              <p class="panel-price">R$ 597<span class="panel-price-note">pagamento único · trilha + ferramenta bônus</span></p>
+              <p class="panel-price"><span class="price-was">de <s>R$ 597</s> por</span>R$ 299 <span class="price-off">50% OFF</span><span class="panel-price-note">pagamento único · trilha + ferramenta bônus</span></p>
               <a class="btn btn-cta" href="automacao-de-cortes.html">Conhecer a trilha</a>
             </div>
           </div>
@@ -199,7 +198,7 @@
                 <li>Narração gratuita clonando a voz do canal (novidade)</li>
                 <li>Comunidade no Discord</li>
               </ul>
-              <p class="panel-price">R$ 597<span class="panel-price-note">pagamento único · trilha + ferramenta bônus</span></p>
+              <p class="panel-price"><span class="price-was">de <s>R$ 597</s> por</span>R$ 299 <span class="price-off">50% OFF</span><span class="panel-price-note">pagamento único · trilha + ferramenta bônus</span></p>
               <a class="btn btn-cta" href="automacao-de-videos.html">Conhecer a trilha</a>
             </div>
           </div>
@@ -229,7 +228,9 @@
           </div>
         </article>
 
-      </div>
+      </div><!-- /.panels -->
+      </div><!-- /.carousel (as setas ‹ › são injetadas aqui pelo script.js) -->
+      <div class="car-dots" id="carDots" aria-label="Escolher produto"></div>
     </section>
 
     <!-- ============ DISCLAIMER ============ -->
@@ -239,28 +240,21 @@
 
   </main>
 
-  <!-- ============ FOOTER ============ -->
+  <!-- ============ FOOTER (compacto — tudo precisa caber na dobra) ============ -->
   <footer class="footer">
-
-    <!-- ============ APOIE (PIX) ============ -->
-    <div class="support">
-      <div class="support-ic" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-      </div>
-      <p class="support-title">Curtiu? Me ajuda a continuar</p>
-      <p class="support-text">Se algo aqui te ajudou, você pode apoiar meu trabalho com um Pix de qualquer valor. Isso ajuda a manter os projetos e o conteúdo gratuito no ar.</p>
-      <div class="pix-box">
-        <span class="pix-label">Chave Pix</span>
-        <code class="pix-key" id="pixKey">kenzo.nakagawa03@gmail.com</code>
-        <button class="btn btn-ghost btn-small" id="copyPix" type="button">Copiar</button>
-      </div>
+    <div class="pix-inline">
+      <svg class="pix-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <span class="pix-label">Apoie via Pix</span>
+      <code class="pix-key" id="pixKey">kenzo.nakagawa03@gmail.com</code>
+      <button class="btn btn-ghost btn-small" id="copyPix" type="button">Copiar</button>
     </div>
-
-    <p class="footer-brand">KENZO<span class="brand-accent">.</span></p>
     <!-- TODO: [EMAIL_SUPORTE] — troque pelo e-mail de suporte definitivo -->
-    <p><a href="mailto:kenzo.nakagawa03@gmail.com">kenzo.nakagawa03@gmail.com</a></p>
-    <p class="footer-links"><a href="termos.html">Termos de Uso</a></p>
-    <p class="footer-copy">© <span id="year"></span> Kenzo Nakagawa. Todos os direitos reservados.</p>
+    <p class="footer-line">
+      <span class="footer-brand-inline">KENZO<span class="brand-accent">.</span></span>
+      <span aria-hidden="true">·</span> <a href="mailto:kenzo.nakagawa03@gmail.com">kenzo.nakagawa03@gmail.com</a>
+      <span aria-hidden="true">·</span> <a href="termos.html">Termos de Uso</a>
+      <span aria-hidden="true">·</span> © <span id="year"></span> Kenzo Nakagawa
+    </p>
   </footer>
 
   <script src="script.js"></script>

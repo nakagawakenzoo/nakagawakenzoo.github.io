@@ -42,9 +42,9 @@ Site pessoal de **Kenzo Nakagawa** que cumpre dois papéis:
 
 | Arquivo | Papel |
 |---|---|
-| `index.html` | Home: header (só a marca), hero, **blocos de links** (fragmentos quadrados: Telegram/TikTok/YouTube/Instagram/Discord), produtos (painéis diagonais), disclaimer, footer (com apoio Pix). |
+| `index.html` | Home **"tela única"** (2026-08-29): tudo cabe na dobra, sem rolagem — hero compacto, **blocos de links** numa fileira (Telegram/TikTok/YouTube/Instagram/Discord), **produtos em CARROSSEL** (auto-avança), disclaimer e footer enxutos (Pix inline). Header oculto na home (o hero já carrega a marca). |
 | `styles.css` | Folha principal: tokens (CSS custom properties), sistema de cores, header, hero + animações, painéis, blocos de links (`.tile`), FAQ, comunidade, Pix, footer. |
-| `script.js` | JS compartilhado (home + páginas de produto): sistema de cor por produto, blur do header, FAQ accordion, digitação do hero, copiar Pix, ano dinâmico. Tudo guardado por `if` — cada página usa só o que tem. |
+| `script.js` | JS compartilhado (home + páginas de produto): sistema de cor por produto, **carrossel de produtos da home**, blur do header, FAQ accordion, digitação do hero, copiar Pix, ano dinâmico. Tudo guardado por `if` — cada página usa só o que tem. |
 | `automacao-de-videos.html` | Página de detalhe do produto "Automação de Vídeos" (acento verde). |
 | `automacao-de-cortes.html` | Página de detalhe do produto "Automação de Cortes" (acento violeta). |
 | `produto.css` | Estilos compartilhados das páginas de produto (hero, timeline, grids, CTA). Acento definido por classe no `<body>` (`page-video` / `page-cortes`). |
@@ -79,9 +79,11 @@ Tema **dark fixo**; a cor de destaque muda conforme o produto com que o visitant
 | `indigo` | bloco Discord | `#6366f1` |
 | `blue` | bloco Grupo de ofertas (Telegram) — reaproveita o azul | `#38bdf8` |
 
-- Padrão inicial da página: **violeta**.
-- `script.js` copia os `--card*` do painel ativo para os `--accent*` globais quando o
-  painel entra na viewport (IntersectionObserver) ou no hover (desktop). Transição ~400ms.
+- Padrão inicial no CSS: **violeta** (na home o JS aplica logo a cor do 1º slide — amarelo AUVP).
+- `script.js` copia os `--card*` do painel ativo para os `--accent*` globais. Na **home**,
+  o painel "ativo" é o **slide atual do carrossel** (a cor da página cicla junto com o
+  auto-avanço); o IntersectionObserver por rolagem só roda em página SEM carrossel.
+  Hover (desktop) também troca. Transição ~400ms.
 - Os **blocos de links** (`.tile[data-accent]`) só trocam a cor **no hover** (desktop) — não
   entram no IntersectionObserver (cinco blocos na mesma faixa trocariam a cor sem parar).
 - Painéis que já estão dentro da tela no carregamento recebem `.in` na hora (sem esperar a
@@ -124,7 +126,9 @@ alternando o lado de origem (zigue-zague esquerda/direita):
   ("Entrar na trilha agora", `target="_blank"`), com a nota de transparência "acesso
   imediato à trilha; ferramenta bônus no 8º dia" (obrigatória ANTES da compra). A antiga
   **lista de espera por mailto foi desativada** (interessados notificados por e-mail em
-  agosto/2026). Preço: **R$ 597** (`.panel-price` na home, `.v-price` nas páginas).
+  agosto/2026). Preço: **promoção "de R$ 597 por R$ 299"** desde 2026-08-29 (~50% off;
+  markup `.price-was`/`.price-off` compartilhado em `styles.css` — usado no `.panel-price`
+  da home, no `.v-price` e no `.v-cta-note` das páginas de produto).
 - O produto Vídeos tem modo inglês e opção sem legenda (card "Português ou inglês").
 
 As páginas de detalhe descrevem o pipeline real das automações (vindo de fluxos n8n),
@@ -148,6 +152,19 @@ arquivo, voice IDs ou nomes de canal.
 
 ## 7. Outras seções
 
+- **Home "tela única" + carrossel (2026-08-29)**: feedback de que muita gente não rolava a
+  página até o fim ⇒ a home inteira agora cabe na dobra (`body.home` = flex column com
+  `min-height: 100svh`; camadas de compactação por altura no fim do `styles.css`: ≤929px
+  esconde os bullets dos painéis, ≤849px compacta hero/tiles, ≤699px aperto final; largura
+  ≤819px = mobile: descrição em 3 linhas com reticências, sem bullets nem setas). Os 5
+  painéis de produto viraram slides de um **carrossel** (`.carousel > .panels#carTrack`):
+  auto-avança a cada **6 s** (`AUTO_MS` no script.js), pausa com hover/toque/foco e retoma
+  12 s após a última interação (`RESUME_MS`); setas e bolinhas são injetadas pelo JS (sem
+  JS o trilho continua rolável no dedo, com scroll-snap). **Gotcha técnica**: com
+  `scroll-snap-type: x mandatory` o Chrome rebate/cancela `scrollTo` suave e até atribuição
+  de `scrollLeft` fora de ponto de snap — por isso a animação é via requestAnimationFrame
+  com o snap temporariamente em `none` (função `animateTo`). O box grande "Apoie" virou a
+  linha `.pix-inline` no footer (mantidos os ids `copyPix`/`pixKey`).
 - **Link-in-bio = blocos de links** (reestruturação de 2026-08-22, a partir de um rascunho do
   Kenzo): logo abaixo do hero, uma **fileira de fragmentos quadrados** (`.tiles > a.tile`),
   mesma receita visual dos painéis (`::before` = aresta na cor, `::after` = fundo, `clip-path`
@@ -166,7 +183,8 @@ arquivo, voice IDs ou nomes de canal.
   final), 6 perguntas, com respostas alinhadas aos requisitos de cada produto (Cortes:
   Windows 10/11 + OpenAI por uso; Vídeos: Win/mac/Linux + ~US$ 14/mês). O accordion vem do
   `script.js`, que as páginas de produto passaram a carregar (substituiu o script inline).
-- **Apoio via Pix** (footer da home): chave `kenzo.nakagawa03@gmail.com` com botão "Copiar".
+- **Apoio via Pix** (footer da home, linha compacta `.pix-inline` desde 2026-08-29): chave
+  `kenzo.nakagawa03@gmail.com` com botão "Copiar".
 - **Termos de Uso** (`termos.html`): linkado no footer de todas as páginas.
 
 ---
@@ -221,4 +239,4 @@ arquivo, voice IDs ou nomes de canal.
 
 ---
 
-_Última atualização deste contexto: 2026-08-22._
+_Última atualização deste contexto: 2026-08-29._

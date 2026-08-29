@@ -82,7 +82,7 @@
   font-weight: 800;
   color: var(--accent);
 }
-.v-price span {
+.v-price .v-price-note {
   display: block;
   margin-top: 0.15rem;
   font-size: 0.78rem;
