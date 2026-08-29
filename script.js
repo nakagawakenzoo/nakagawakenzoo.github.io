@@ -22,9 +22,8 @@
   var carTrack = document.getElementById("carTrack"); // só existe na home (carrossel)
 
   if (carTrack) {
-    // Home: os painéis são slides do carrossel — sempre visíveis; a cor global
-    // passa a ser definida pelo slide ativo (ver bloco do carrossel, abaixo).
-    panels.forEach(function (panel) { panel.classList.add("in"); });
+    // Home: os painéis são slides do carrossel — a cor global e o estado
+    // ativo/translúcido são controlados pelo bloco do carrossel, abaixo.
   } else if ("IntersectionObserver" in window) {
     // Páginas com rolagem: painel que entra na viewport revela e assume a cor global
     var observer = new IntersectionObserver(
@@ -60,20 +59,22 @@
   }
 
   /* ============ Carrossel de produtos (home) ============
-     Rolagem nativa + scroll-snap (swipe de graça no celular). O JS cuida de:
-     auto-avanço a cada AUTO_MS, setas ‹ ›, bolinhas, sincronizar a cor global
-     com o slide ativo e pausar quando o visitante interage. */
+     Rolagem nativa + scroll-snap (swipe de graça no celular); slide ativo
+     centralizado com os vizinhos translúcidos de amostra. O JS cuida de:
+     auto-avanço a cada AUTO_MS, setas ‹ ›, bolinhas, sincronizar cor global +
+     .is-active com o slide ativo, e segurar RESUME_MS parado após interação. */
   if (carTrack) {
     var slides = Array.prototype.slice.call(carTrack.children);
     var carBox = document.getElementById("carousel");
     var dotsBox = document.getElementById("carDots");
     var prefersReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    var AUTO_MS = 6000;    // intervalo do auto-avanço
-    var RESUME_MS = 12000; // volta a rodar sozinho X ms após a última interação
+    var AUTO_MS = 2000;    // intervalo do auto-avanço
+    var RESUME_MS = 30000; // fica estático X ms após a última interação
     var current = 0;
     var autoTimer = null;
     var resumeTimer = null;
+    var holdUntil = 0;     // até quando o carrossel deve ficar parado
 
     slides.forEach(function (slide, i) {
       slide.setAttribute("role", "group");
@@ -108,6 +109,7 @@
 
     function setActive(i) {
       current = i;
+      slides.forEach(function (s, j) { s.classList.toggle("is-active", j === i); });
       dots.forEach(function (d, j) { d.setAttribute("aria-current", j === i ? "true" : "false"); });
       setAccentFrom(slides[i]);
     }
@@ -160,9 +162,13 @@
       setActive(target);
     }
 
-    // Swipe/rolagem manual: espera assentar e sincroniza bolinhas + cor
+    // Swipe/rolagem manual: espera assentar e sincroniza bolinhas + cor.
+    // stride = distância entre slides (largura do slide + gap do trilho)
     function syncToScroll() {
-      var i = Math.round(carTrack.scrollLeft / (carTrack.clientWidth || 1));
+      var stride = slides.length > 1
+        ? slides[1].offsetLeft - slides[0].offsetLeft
+        : carTrack.clientWidth || 1;
+      var i = Math.round(carTrack.scrollLeft / stride);
       i = Math.max(0, Math.min(slides.length - 1, i));
       if (i !== current) setActive(i);
     }
@@ -188,6 +194,7 @@
     }
     function interacted() {
       stop();
+      holdUntil = Date.now() + RESUME_MS;
       clearTimeout(resumeTimer);
       resumeTimer = setTimeout(play, RESUME_MS);
     }
@@ -195,13 +202,17 @@
     prevBtn.addEventListener("click", function () { goTo(current - 1); interacted(); });
     nextBtn.addEventListener("click", function () { goTo(current + 1); interacted(); });
 
-    // Pausa com mouse em cima / dedo arrastando / foco de teclado dentro do carrossel
-    // (arrastar/rolar também cancela a animação em andamento p/ não brigar com o dedo)
-    carBox.addEventListener("pointerenter", stop);
-    carBox.addEventListener("pointerleave", function () { clearTimeout(resumeTimer); play(); });
+    // Pausa com mouse em cima / dedo arrastando / foco de teclado dentro do
+    // carrossel (arrastar/rolar também cancela a animação em andamento).
+    // Ao sair com o mouse, só retoma quando a janela de RESUME_MS acabar.
+    carBox.addEventListener("pointerenter", function () { stop(); clearTimeout(resumeTimer); });
+    carBox.addEventListener("pointerleave", function () {
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(play, Math.max(0, holdUntil - Date.now()));
+    });
     carTrack.addEventListener("pointerdown", function () { cancelAnim(); interacted(); }, { passive: true });
     carTrack.addEventListener("wheel", function () { cancelAnim(); interacted(); }, { passive: true });
-    carBox.addEventListener("focusin", stop);
+    carBox.addEventListener("focusin", function () { stop(); clearTimeout(resumeTimer); });
     carBox.addEventListener("focusout", interacted);
 
     // Janela mudou de tamanho: reancora o slide ativo (sem animação)

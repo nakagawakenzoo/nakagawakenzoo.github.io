@@ -93,8 +93,9 @@ Tema **dark fixo**; a cor de destaque muda conforme o produto com que o visitant
 
 ## 5. Produtos (ordem atual na home)
 
-Os produtos são **painéis largos sangrados com corte diagonal** (`clip-path`), empilhados,
-alternando o lado de origem (zigue-zague esquerda/direita):
+Os produtos são **cards de carrossel** na home (borda + glow na cor do produto, canto
+arredondado — o formato facetado/diagonal saiu da home em 2026-08-29, junto com a arte
+lateral `panel-art`), um slide por produto:
 
 1. **Curso AUVP** (`yellow`, esquerda) — afiliado do Raul Sena (Investidor Sardinha).
    Badge "Indicação". Link de desconto: `https://sard.ink/AUVP-Desenvolvimento` (dá desconto
@@ -109,9 +110,10 @@ alternando o lado de origem (zigue-zague esquerda/direita):
 5. **Salesforce Marketing Cloud** (`blue`, esquerda) — **Em breve** (`panel-soon`): botão
    desabilitado + "Me avise no lançamento" (mailto).
 
-> Ao reordenar/adicionar painéis, mantenha o zigue-zague: posições ímpares = `panel-left`,
-> pares = `panel-right`. As variações de `clip-path` por posição estão em `styles.css`
-> (`.panel-row:nth-of-type(3|4)`).
+> Para reordenar/adicionar produtos, basta mover/criar o
+> `<article class="panel-row" data-accent="...">` dentro do trilho `#carTrack` — não há
+> mais regra de posição (o zigue-zague `panel-left/right` acabou); setas, bolinhas e
+> atributos aria dos slides são gerados pelo `script.js`.
 
 ### Links de checkout (Kiwify)
 - Automação de Vídeos: `https://pay.kiwify.com.br/Uu09KDB`
@@ -157,10 +159,15 @@ arquivo, voice IDs ou nomes de canal.
   `min-height: 100svh`; camadas de compactação por altura no fim do `styles.css`: ≤929px
   esconde os bullets dos painéis, ≤849px compacta hero/tiles, ≤699px aperto final; largura
   ≤819px = mobile: descrição em 3 linhas com reticências, sem bullets nem setas). Os 5
-  painéis de produto viraram slides de um **carrossel** (`.carousel > .panels#carTrack`):
-  auto-avança a cada **6 s** (`AUTO_MS` no script.js), pausa com hover/toque/foco e retoma
-  12 s após a última interação (`RESUME_MS`); setas e bolinhas são injetadas pelo JS (sem
-  JS o trilho continua rolável no dedo, com scroll-snap). **Gotcha técnica**: com
+  produtos viraram slides de um **carrossel com peek** (`.carousel > .panels#carTrack`):
+  o slide ativo fica **centralizado** (`--slide-w` = 74% desktop / 86% mobile, snap center)
+  e os vizinhos aparecem **translúcidos de amostra** nas laterais (`.is-active` no ativo;
+  inativos com opacity 0.32 + scale 0.94) — pedido do Kenzo para o visitante VER que tem
+  mais coisa pro lado. Auto-avança a cada **2 s** (`AUTO_MS` no script.js) e, se o
+  visitante interagir (seta/bolinha/swipe/wheel/foco), fica **estático por 30 s**
+  (`RESUME_MS`; hover pausa e, ao sair o mouse, respeita o que restar da janela de 30 s
+  via `holdUntil`). Setas e bolinhas são injetadas pelo JS (sem JS o trilho continua
+  rolável no dedo, com scroll-snap). **Gotcha técnica**: com
   `scroll-snap-type: x mandatory` o Chrome rebate/cancela `scrollTo` suave e até atribuição
   de `scrollLeft` fora de ponto de snap — por isso a animação é via requestAnimationFrame
   com o snap temporariamente em `none` (função `animateTo`). O box grande "Apoie" virou a
