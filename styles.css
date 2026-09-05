@@ -34,7 +34,7 @@
 [data-accent="rose"]   { --card: #f43f5e; --card-soft: #fb7185; --card-contrast: #0d0b14; --card-glow: rgba(244, 63, 94, 0.35); }
 
 /* Cores dos blocos de links (mesmo mecanismo: o JS copia --card* para --accent*) */
-[data-accent="cyan"]   { --card: #22d3ee; --card-soft: #67e8f9; --card-contrast: #0d0b14; --card-glow: rgba(34, 211, 238, 0.35); }  /* TikTok */
+[data-accent="cyan"]   { --card: #22d3ee; --card-soft: #67e8f9; --card-contrast: #0d0b14; --card-glow: rgba(34, 211, 238, 0.35); }  /* TikTok + card PAPO AI */
 [data-accent="red"]    { --card: #ef4444; --card-soft: #f87171; --card-contrast: #0d0b14; --card-glow: rgba(239, 68, 68, 0.35); }   /* YouTube */
 [data-accent="pink"]   { --card: #ec4899; --card-soft: #f472b6; --card-contrast: #0d0b14; --card-glow: rgba(236, 72, 153, 0.35); }  /* Instagram */
 [data-accent="indigo"] { --card: #6366f1; --card-soft: #818cf8; --card-contrast: #0d0b14; --card-glow: rgba(99, 102, 241, 0.35); }  /* Discord */

@@ -73,7 +73,7 @@ Tema **dark fixo**; a cor de destaque muda conforme o produto com que o visitant
 | `yellow` | Curso AUVP | `#facc15` |
 | `blue` | Salesforce Marketing Cloud | `#38bdf8` |
 | `rose` | Aeternum (jogo) | `#f43f5e` |
-| `cyan` | bloco TikTok | `#22d3ee` |
+| `cyan` | bloco TikTok + card PAPO AI | `#22d3ee` |
 | `red` | bloco YouTube | `#ef4444` |
 | `pink` | bloco Instagram | `#ec4899` |
 | `indigo` | bloco Discord | `#6366f1` |
@@ -97,17 +97,23 @@ Os produtos são **cards de carrossel** na home (borda + glow na cor do produto,
 arredondado — o formato facetado/diagonal saiu da home em 2026-08-29, junto com a arte
 lateral `panel-art`), um slide por produto:
 
-1. **Curso AUVP** (`yellow`, esquerda) — afiliado do Raul Sena (Investidor Sardinha).
-   Badge "Indicação". Link de desconto: `https://sard.ink/AUVP-Desenvolvimento` (dá desconto
-   na matrícula). Substituiu o antigo link `form.auvp.com.br/...indicacao=...`.
-2. **Aeternum — Hoje na História** (`rose`, direita) — jogo autoral, **gratuito**, jogável no
+1. **Curso AUVP** (`yellow`) — afiliado do Raul Sena (Investidor Sardinha). Badge
+   "Indicação". Link de desconto: `https://sard.ink/AUVPKenzo` (dá desconto na matrícula;
+   trocado em 2026-08-29 — antes era `sard.ink/AUVP-Desenvolvimento` e, antes disso,
+   `form.auvp.com.br/...indicacao=...`).
+2. **Aeternum — Hoje na História** (`rose`) — jogo autoral, **gratuito**, jogável no
    navegador. Badge "Indicação". Link com UTM de campanha. https://playaeternum.com/
-3. **Automação de Cortes** (`violet`, esquerda) — **vendas ABERTAS** (trilha). Badge
+3. **PAPO AI — Atendente de IA no WhatsApp** (`cyan`) — indicação de afiliado (criado em
+   2026-08-29): SaaS que responde leads no WhatsApp em segundos, qualifica e agenda reunião
+   (API oficial da Meta, no número do cliente). Link de indicação:
+   `https://papoai.com.br/52c8d9`; CTA "Testar 7 dias grátis" (trial do fornecedor —
+   conferir se ele mudar as condições).
+4. **Automação de Cortes** (`violet`) — **vendas ABERTAS** (trilha). Badge
    "Vendas abertas"; botão "Conhecer a trilha" → `automacao-de-cortes.html` (que converte
    para o checkout Kiwify).
-4. **Automação de Vídeos** (`green`, direita) — **vendas ABERTAS** (trilha). Badge
+5. **Automação de Vídeos** (`green`) — **vendas ABERTAS** (trilha). Badge
    "Vendas abertas"; botão "Conhecer a trilha" → `automacao-de-videos.html`.
-5. **Salesforce Marketing Cloud** (`blue`, esquerda) — **Em breve** (`panel-soon`): botão
+6. **Salesforce Marketing Cloud** (`blue`) — **Em breve** (`panel-soon`): botão
    desabilitado + "Me avise no lançamento" (mailto).
 
 > Para reordenar/adicionar produtos, basta mover/criar o
