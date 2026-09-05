@@ -105,7 +105,8 @@ lateral `panel-art`), um slide por produto:
    2026-08-29): SaaS que responde leads no WhatsApp em segundos, qualifica e agenda reunião
    (API oficial da Meta, no número do cliente). Link de indicação:
    `https://papoai.com.br/52c8d9`; CTA "Testar 7 dias grátis" (trial do fornecedor —
-   conferir se ele mudar as condições).
+   conferir se ele mudar as condições). **Cupom em destaque** no card: `KENZO`
+   (`.panel-coupon`, pílula tracejada acima do CTA).
 3. **Aeternum — Hoje na História** (`rose`) — jogo autoral, **gratuito**, jogável no
    navegador. Badge "Indicação". Link com UTM de campanha. https://playaeternum.com/
    (movido para a 3ª posição a pedido do Kenzo em 2026-08-29).
