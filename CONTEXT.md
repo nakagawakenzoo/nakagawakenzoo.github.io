@@ -101,13 +101,14 @@ lateral `panel-art`), um slide por produto:
    "Indicação". Link de desconto: `https://sard.ink/AUVPKenzo` (dá desconto na matrícula;
    trocado em 2026-08-29 — antes era `sard.ink/AUVP-Desenvolvimento` e, antes disso,
    `form.auvp.com.br/...indicacao=...`).
-2. **Aeternum — Hoje na História** (`rose`) — jogo autoral, **gratuito**, jogável no
-   navegador. Badge "Indicação". Link com UTM de campanha. https://playaeternum.com/
-3. **PAPO AI — Atendente de IA no WhatsApp** (`cyan`) — indicação de afiliado (criado em
+2. **PAPO AI — Atendente de IA no WhatsApp** (`cyan`) — indicação de afiliado (criado em
    2026-08-29): SaaS que responde leads no WhatsApp em segundos, qualifica e agenda reunião
    (API oficial da Meta, no número do cliente). Link de indicação:
    `https://papoai.com.br/52c8d9`; CTA "Testar 7 dias grátis" (trial do fornecedor —
    conferir se ele mudar as condições).
+3. **Aeternum — Hoje na História** (`rose`) — jogo autoral, **gratuito**, jogável no
+   navegador. Badge "Indicação". Link com UTM de campanha. https://playaeternum.com/
+   (movido para a 3ª posição a pedido do Kenzo em 2026-08-29).
 4. **Automação de Cortes** (`violet`) — **vendas ABERTAS** (trilha). Badge
    "Vendas abertas"; botão "Conhecer a trilha" → `automacao-de-cortes.html` (que converte
    para o checkout Kiwify).
