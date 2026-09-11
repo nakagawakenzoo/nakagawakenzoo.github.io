@@ -188,7 +188,7 @@ arquivo, voice IDs ou nomes de canal.
   glow cortado em bordas retas (feedback do Kenzo em vídeo) — não reintroduzir, e **nunca
   clipar `.tiles` com overflow** (corta o glow). Ordem: **Grupo de ofertas (Telegram)**
   `https://t.me/ofertasdokenzo` → TikTok → YouTube → Instagram → Discord
-  `https://discord.gg/aJTsQ9AXE`. Sempre numa fileira única (encolhem via `clamp`). O header
+  `https://discord.gg/aDYgBns94`. Sempre numa fileira única (encolhem via `clamp`). O header
   ficou **só com a marca** (os ícones sociais saíram de lá). **Kick foi removido** do site.
 - **Removidos da home em 2026-08-22**: título "Soluções" + subtítulo, seção "Como funciona",
   bloco de comunidade, FAQ e o **pop-up de lojas** (Amazon/ML/Shopee + Telegram). Os links
@@ -237,7 +237,7 @@ arquivo, voice IDs ou nomes de canal.
 
 ## 10. Pendências / TODO
 
-- [ ] **Blocos de comunidade viram botão** com o convite `https://discord.gg/aJTsQ9AXE`
+- [ ] **Blocos de comunidade viram botão** com o convite `https://discord.gg/aDYgBns94`
       (o bloco de link do Discord na home já usa esse convite).
 - [ ] **Imagens** em `assets/`: `perfil.jpg` e as capas dos produtos (hoje há
       placeholders/anéis). Ver `assets/LEIA-ME.md`. (`og-cover.jpg` feita em 2026-07-19.)
