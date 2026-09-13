@@ -128,7 +128,7 @@ lateral `panel-art`), um slide por produto:
 - ClipOS (Automação de Cortes): `https://pay.kiwify.com.br/1YQ9fto`
 
 ### Modelo de venda — APP (desde 2026-09-13)
-- Os dois produtos agora são **aplicativos de computador**, não mais template n8n + trilha:
+- Os dois produtos agora entregam um **aplicativo de computador** no lugar do template n8n:
   **FacelessOS** (vídeos longos; projeto `Documents\darktube-app`) e **ClipOS** (cortes para
   Shorts; projeto `Documents\cortes-app`). Mesmos checkouts da Kiwify e mesma promoção
   **"de R$ 597 por R$ 299"** (~50% off desde 2026-08-29; markup `.price-was`/`.price-off`
@@ -139,11 +139,12 @@ lateral `panel-art`), um slide por produto:
   FacelessOS não tem doc de venda). Antes de anunciar recurso novo, confirmar no código.
 - **Só Windows 10/11** nas páginas: os instaladores de Mac/Linux existem, mas nunca rodaram
   numa máquina real (recomendação do próprio doc de venda). Incluir quando o Kenzo testar.
-- **Prazo de entrega NÃO aparece nas páginas.** A nota antiga "ferramenta bônus no 8º dia"
-  (drip da trilha contra o golpe comprar → baixar → estornar) saiu junto com a trilha, e não
-  há registro de como a Kiwify libera os apps. Se a área de membros ainda segurar o download
-  até o 8º dia, a nota de transparência precisa voltar ANTES da compra (hero + CTA final das
-  duas páginas). Ver TODO.
+- **Entrega (confirmada pelo Kenzo em 2026-09-13, igual nos dois produtos)**: a Kiwify libera
+  um **curso com 1 aula por dia durante 7 dias** e o **app no 8º dia** (drip contra o golpe
+  comprar → baixar → estornar). A nota de transparência é **OBRIGATÓRIA antes da compra** e
+  está em: hero (`.v-cta-note` sob o preço), item "Curso em 7 aulas" + "liberado no 8º dia"
+  em "O que você recebe", FAQ "Quando recebo o app?" e nota do CTA final das duas páginas;
+  na home, 1º bullet dos cards. O tema do curso não foi informado — não afirmar que é N8N.
 - Honestidade específica: no ClipOS, o layout **react** exige marcar a janela do vídeo à mão
   (uma vez, "aplicar a todos"; a detecção automática foi reprovada no app) — o site diz isso.
   Custos: FacelessOS ~US$ 0,47/vídeo com narração na nuvem (medido em produção, manual do
@@ -153,8 +154,8 @@ lateral `panel-art`), um slide por produto:
   `#exemplo` → `#como-funciona` (timeline) → diferenciais/robustez → (ClipOS: `#ia`, tabela
   nuvem × no seu PC `.v-table` + `.v-highlight`) → O que você recebe → Discord → (ClipOS:
   "Para quem é / não é" `.v-fit`) → Requisitos honestos → FAQ → CTA "Quero o <App>".
-- Histórico: 03/08–13/09/2026 o modelo foi **trilha de aulas N8N** (1 aula/dia + ferramenta
-  bônus no 8º dia); antes disso, lista de espera por mailto (desativada em agosto/2026).
+- Histórico: 03/08–13/09/2026 o produto foi **trilha de aulas N8N** + ferramenta n8n bônus no
+  8º dia (mesmo drip de hoje); antes disso, lista de espera por mailto (desativada em agosto/2026).
 
 As páginas de detalhe descrevem o que os apps fazem **de forma genérica** — sem expor
 chaves de API, IDs de credencial, caminhos de arquivo, voice IDs ou nomes de canal.
@@ -178,9 +179,14 @@ chaves de API, IDs de credencial, caminhos de arquivo, voice IDs ou nomes de can
 
 - **Home "tela única" + carrossel (2026-08-29)**: feedback de que muita gente não rolava a
   página até o fim ⇒ a home inteira agora cabe na dobra (`body.home` = flex column com
-  `min-height: 100svh`; camadas de compactação por altura no fim do `styles.css`: ≤929px
-  esconde os bullets dos painéis, ≤849px compacta hero/tiles, ≤699px aperto final; largura
-  ≤819px = mobile: descrição em 3 linhas com reticências, sem bullets nem setas). Os 5
+  `min-height: 100svh`; camadas de compactação por altura no fim do `styles.css`: ≤999px
+  esconde os bullets dos painéis (era ≤929px até 2026-09-13), ≤849px compacta hero/tiles e
+  limita a descrição a 3 linhas, ≤699px aperto final; largura ≤819px = mobile: descrição em
+  3 linhas com reticências, sem bullets nem setas). **A altura do trilho é a do card MAIS
+  ALTO** — card novo, bullet que quebra linha ou descrição maior pede nova medição. Medido
+  sem rolagem em 2026-09-13: 1920×1080, 1280×1000, 1280×999, 1280×930, 1280×850, 1440×789,
+  1536×730, 1280×720, 1024×700, 1366×657, 390×844, 375×812, 375×667 (só a janela atípica
+  820×600 rola ~38px). Cards dos apps na home: 4 bullets curtos, sem quebra. Os 5
   produtos viraram slides de um **carrossel com peek** (`.carousel > .panels#carTrack`):
   o slide ativo fica **centralizado** (`--slide-w` = 74% desktop / 86% mobile, snap center)
   e os vizinhos aparecem **translúcidos de amostra** nas laterais (`.is-active` no ativo;
@@ -212,7 +218,7 @@ chaves de API, IDs de credencial, caminhos de arquivo, voice IDs ou nomes de can
   "O que você recebe". Os blocos ainda **não são botões clicáveis** (TODO) — podem virar
   botão com o convite acima.
 - **FAQ**: **só nas páginas de produto** (seção `#faq`, entre "Requisitos honestos" e o CTA
-  final): 9 perguntas no ClipOS e 8 no FacelessOS, alinhadas aos requisitos de cada app
+  final): 10 perguntas no ClipOS e 9 no FacelessOS (inclui "Quando recebo o app?"), alinhadas aos requisitos de cada app
   (ClipOS: Windows 10/11, OpenAI opcional, cookies do YouTube para alguns downloads;
   FacelessOS: Windows 10/11, OpenAI + Pexels, ~US$ 0,47/vídeo com narração na nuvem). O
   accordion vem do `script.js`, que as páginas de produto passaram a carregar.
@@ -255,9 +261,8 @@ chaves de API, IDs de credencial, caminhos de arquivo, voice IDs ou nomes de can
 
 ## 10. Pendências / TODO
 
-- [ ] **Confirmar com o Kenzo como a Kiwify libera os apps** (na hora ou só no 8º dia). Se
-      houver drip, recolocar a nota de transparência antes da compra (hero + CTA final das
-      duas páginas de produto). Hoje as páginas não citam prazo nenhum.
+- [x] ~~Confirmar como a Kiwify libera os apps~~ — curso 1 aula/dia por 7 dias + app no 8º
+      dia, nos dois produtos (Kenzo, 2026-09-13); nota de transparência de volta nas páginas.
 - [ ] **Mac e Linux nas páginas dos apps** quando o Kenzo testar numa máquina real.
 - [ ] (Opcional) **Capturas de tela dos apps** nas páginas — sem mostrar nome de canal nem chaves.
 - [ ] **Blocos de comunidade viram botão** com o convite `https://discord.gg/aDYgBns94`
@@ -274,7 +279,10 @@ chaves de API, IDs de credencial, caminhos de arquivo, voice IDs ou nomes de can
       jpg = a página segue leve; o vídeo só baixa no play (2026-08-03).
 - [ ] **Salesforce Marketing Cloud**: sair de "Em breve" quando lançar (tem CTA de compra a criar).
 - [ ] **Revisão jurídica** dos Termos (Seções 8 e 9) e, se abrir **MEI/CNPJ**, trocar a
-      identificação do fornecedor de CPF para CNPJ.
+      identificação do fornecedor de CPF para CNPJ. Levar a pergunta: com o app liberado só
+      no 8º dia, de quando conta o arrependimento de 7 dias? A Seção 8 diz "da compra ou do
+      recebimento do acesso, o que ocorrer por último" e o art. 49 do CDC fala em
+      "recebimento do produto".
 - [ ] Avaliar **Política de Privacidade** separada (hoje LGPD resumida na Seção 17 dos Termos).
 - [ ] (Opcional) frase de "possibilidade de renda, não garantia" nas páginas de automação — pendente de decisão.
 

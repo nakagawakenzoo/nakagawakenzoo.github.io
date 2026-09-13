@@ -1034,9 +1034,11 @@ body.home {
 .home .footer-line a:hover { color: var(--accent-soft); }
 .home .footer-brand-inline { color: var(--text); font-weight: 800; letter-spacing: 0.1em; }
 
-/* Telas mais baixas (notebook 1366×768 etc.): os bullets saem para o painel
-   caber na dobra — o essencial (título, descrição, preço, CTA) fica */
-@media (max-height: 929px) {
+/* Abaixo de 1000px de altura os bullets saem para o card caber na dobra — o
+   essencial (título, descrição, preço, CTA) fica. O limite é medido pelo card
+   MAIS ALTO do carrossel (a altura do trilho é a dele): card novo ou bullet que
+   quebra linha pede nova medição em 990–1000px. */
+@media (max-height: 999px) {
   .home .panel-bullets { display: none; }
 }
 
@@ -1049,7 +1051,13 @@ body.home {
   .home .tile { width: clamp(56px, 16vw, 88px); }
   .home .panels { padding-block: 0.25rem; }
   .home .panel-content { padding-top: 0.85rem; padding-bottom: 0.85rem; gap: 0.45rem; }
-  .home .panel-desc { font-size: 0.8rem; }
+  .home .panel-desc {
+    font-size: 0.8rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
   .home .car-dots { padding: 0.25rem 0 0; }
   .home .disclaimer p { font-size: 0.56rem; }
 }
