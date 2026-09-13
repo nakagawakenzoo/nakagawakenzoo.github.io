@@ -14,7 +14,7 @@
 
 Site pessoal de **Kenzo Nakagawa** que cumpre dois papéis:
 
-1. **Landing page de produtos digitais** (automações com IA) — cada produto leva ao
+1. **Landing page de produtos digitais** (apps de automação com IA) — cada produto leva ao
    checkout (Kiwify) ou a uma página de detalhe que explica e converte.
 2. **Link-in-bio** — substitui o Linktree na bio do Instagram. A maior parte do
    tráfego vem do celular ⇒ **mobile-first é obrigatório**.
@@ -45,9 +45,9 @@ Site pessoal de **Kenzo Nakagawa** que cumpre dois papéis:
 | `index.html` | Home **"tela única"** (2026-08-29): tudo cabe na dobra, sem rolagem — hero compacto, **blocos de links** numa fileira (Telegram/TikTok/YouTube/Instagram/Discord), **produtos em CARROSSEL** (auto-avança), disclaimer e footer enxutos (Pix inline). Header oculto na home (o hero já carrega a marca). |
 | `styles.css` | Folha principal: tokens (CSS custom properties), sistema de cores, header, hero + animações, painéis, blocos de links (`.tile`), FAQ, comunidade, Pix, footer. |
 | `script.js` | JS compartilhado (home + páginas de produto): sistema de cor por produto, **carrossel de produtos da home**, blur do header, FAQ accordion, digitação do hero, copiar Pix, ano dinâmico. Tudo guardado por `if` — cada página usa só o que tem. |
-| `automacao-de-videos.html` | Página de detalhe do produto "Automação de Vídeos" (acento verde). |
-| `automacao-de-cortes.html` | Página de detalhe do produto "Automação de Cortes" (acento violeta). |
-| `produto.css` | Estilos compartilhados das páginas de produto (hero, timeline, grids, CTA). Acento definido por classe no `<body>` (`page-video` / `page-cortes`). |
+| `automacao-de-videos.html` | Página de detalhe do app **FacelessOS** (Automação de Vídeos, acento verde). URL mantida de antes do app. |
+| `automacao-de-cortes.html` | Página de detalhe do app **ClipOS** (Automação de Cortes, acento violeta). URL mantida de antes do app. |
+| `produto.css` | Estilos compartilhados das páginas de produto (hero, timeline, grids, CTA, tabela comparativa `.v-table`, destaque `.v-highlight`, "para quem é" `.v-fit`). Acento definido por classe no `<body>` (`page-video` / `page-cortes`). |
 | `termos.html` | Termos de Uso (documento jurídico, 21 seções). |
 | `legal.css` | Estilos da página de termos. |
 | `assets/favicon.svg` | Favicon (olho minimalista violeta). |
@@ -68,8 +68,8 @@ Tema **dark fixo**; a cor de destaque muda conforme o produto com que o visitant
 
 | accent | Produto | Cor |
 |---|---|---|
-| `violet` | Automação de Cortes | `#8b5cf6` |
-| `green` | Automação de Vídeos | `#10b981` |
+| `violet` | ClipOS (Automação de Cortes) | `#8b5cf6` |
+| `green` | FacelessOS (Automação de Vídeos) | `#10b981` |
 | `yellow` | Curso AUVP | `#facc15` |
 | `blue` | Salesforce Marketing Cloud | `#38bdf8` |
 | `rose` | Aeternum (jogo) | `#f43f5e` |
@@ -110,11 +110,11 @@ lateral `panel-art`), um slide por produto:
 3. **Aeternum — Hoje na História** (`rose`) — jogo autoral, **gratuito**, jogável no
    navegador. Badge "Indicação". Link com UTM de campanha. https://playaeternum.com/
    (movido para a 3ª posição a pedido do Kenzo em 2026-08-29).
-4. **Automação de Cortes** (`violet`) — **vendas ABERTAS** (trilha). Badge
-   "Vendas abertas"; botão "Conhecer a trilha" → `automacao-de-cortes.html` (que converte
-   para o checkout Kiwify).
-5. **Automação de Vídeos** (`green`) — **vendas ABERTAS** (trilha). Badge
-   "Vendas abertas"; botão "Conhecer a trilha" → `automacao-de-videos.html`.
+4. **ClipOS — App de Cortes** (`violet`) — **app de computador, vendas ABERTAS**. Badge
+   "Novo app · Vendas abertas"; botão "Conhecer o ClipOS" → `automacao-de-cortes.html` (que
+   converte para o checkout Kiwify).
+5. **FacelessOS — App de Vídeos** (`green`) — **app de computador, vendas ABERTAS**. Badge
+   "Novo app · Vendas abertas"; botão "Conhecer o FacelessOS" → `automacao-de-videos.html`.
 6. **Salesforce Marketing Cloud** (`blue`) — **Em breve** (`panel-soon`): botão
    desabilitado + "Me avise no lançamento" (mailto).
 
@@ -124,26 +124,40 @@ lateral `panel-art`), um slide por produto:
 > atributos aria dos slides são gerados pelo `script.js`.
 
 ### Links de checkout (Kiwify)
-- Automação de Vídeos: `https://pay.kiwify.com.br/Uu09KDB`
-- Automação de Cortes: `https://pay.kiwify.com.br/1YQ9fto`
+- FacelessOS (Automação de Vídeos): `https://pay.kiwify.com.br/Uu09KDB`
+- ClipOS (Automação de Cortes): `https://pay.kiwify.com.br/1YQ9fto`
 
-### Modelo de venda — TRILHA (vendas REATIVADAS em 03/08/2026)
-- Formato: **trilha de aulas de automação com N8N** liberadas 1/dia na Kiwify (drip); a
-  **ferramenta pronta** (fluxo + instalador) é liberada como **BÔNUS no 8º dia** — depois
-  da janela de arrependimento de 7 dias, o que neutraliza o golpe do reembolso (comprar →
-  baixar → estornar). A área de membros na Kiwify já está montada nesse formato.
-- Vendas REATIVADAS: as duas páginas de detalhe têm CTA direto pro checkout Kiwify
-  ("Entrar na trilha agora", `target="_blank"`), com a nota de transparência "acesso
-  imediato à trilha; ferramenta bônus no 8º dia" (obrigatória ANTES da compra). A antiga
-  **lista de espera por mailto foi desativada** (interessados notificados por e-mail em
-  agosto/2026). Preço: **promoção "de R$ 597 por R$ 299"** desde 2026-08-29 (~50% off;
-  markup `.price-was`/`.price-off` compartilhado em `styles.css` — usado no `.panel-price`
-  da home, no `.v-price` e no `.v-cta-note` das páginas de produto).
-- O produto Vídeos tem modo inglês e opção sem legenda (card "Português ou inglês").
+### Modelo de venda — APP (desde 2026-09-13)
+- Os dois produtos agora são **aplicativos de computador**, não mais template n8n + trilha:
+  **FacelessOS** (vídeos longos; projeto `Documents\darktube-app`) e **ClipOS** (cortes para
+  Shorts; projeto `Documents\cortes-app`). Mesmos checkouts da Kiwify e mesma promoção
+  **"de R$ 597 por R$ 299"** (~50% off desde 2026-08-29; markup `.price-was`/`.price-off`
+  compartilhado em `styles.css`, usado no `.panel-price` da home, no `.v-price` e no
+  `.v-cta-note` das páginas de produto).
+- **Fontes da verdade da copy**: `cortes-app/docs/venda-kiwify.md` (texto de venda do ClipOS,
+  verificável no app) e `darktube-app/README.md` + `ferramentas/leiame-windows.txt` (o
+  FacelessOS não tem doc de venda). Antes de anunciar recurso novo, confirmar no código.
+- **Só Windows 10/11** nas páginas: os instaladores de Mac/Linux existem, mas nunca rodaram
+  numa máquina real (recomendação do próprio doc de venda). Incluir quando o Kenzo testar.
+- **Prazo de entrega NÃO aparece nas páginas.** A nota antiga "ferramenta bônus no 8º dia"
+  (drip da trilha contra o golpe comprar → baixar → estornar) saiu junto com a trilha, e não
+  há registro de como a Kiwify libera os apps. Se a área de membros ainda segurar o download
+  até o 8º dia, a nota de transparência precisa voltar ANTES da compra (hero + CTA final das
+  duas páginas). Ver TODO.
+- Honestidade específica: no ClipOS, o layout **react** exige marcar a janela do vídeo à mão
+  (uma vez, "aplicar a todos"; a detecção automática foi reprovada no app) — o site diz isso.
+  Custos: FacelessOS ~US$ 0,47/vídeo com narração na nuvem (medido em produção, manual do
+  DarkTube; ~US$ 14/mês com 1 vídeo/dia), voz local grátis; ClipOS com OpenAI opcional,
+  US$ 0,25–0,45/vídeo.
+- **Estrutura das páginas**: hero (selo "<App> · Novo app") → `#app` "Agora é um app" →
+  `#exemplo` → `#como-funciona` (timeline) → diferenciais/robustez → (ClipOS: `#ia`, tabela
+  nuvem × no seu PC `.v-table` + `.v-highlight`) → O que você recebe → Discord → (ClipOS:
+  "Para quem é / não é" `.v-fit`) → Requisitos honestos → FAQ → CTA "Quero o <App>".
+- Histórico: 03/08–13/09/2026 o modelo foi **trilha de aulas N8N** (1 aula/dia + ferramenta
+  bônus no 8º dia); antes disso, lista de espera por mailto (desativada em agosto/2026).
 
-As páginas de detalhe descrevem o pipeline real das automações (vindo de fluxos n8n),
-mas **de forma genérica** — sem expor chaves de API, IDs de credencial, caminhos de
-arquivo, voice IDs ou nomes de canal.
+As páginas de detalhe descrevem o que os apps fazem **de forma genérica** — sem expor
+chaves de API, IDs de credencial, caminhos de arquivo, voice IDs ou nomes de canal.
 
 ---
 
@@ -198,12 +212,16 @@ arquivo, voice IDs ou nomes de canal.
   "O que você recebe". Os blocos ainda **não são botões clicáveis** (TODO) — podem virar
   botão com o convite acima.
 - **FAQ**: **só nas páginas de produto** (seção `#faq`, entre "Requisitos honestos" e o CTA
-  final), 6 perguntas, com respostas alinhadas aos requisitos de cada produto (Cortes:
-  Windows 10/11 + OpenAI por uso; Vídeos: Win/mac/Linux + ~US$ 14/mês). O accordion vem do
-  `script.js`, que as páginas de produto passaram a carregar (substituiu o script inline).
+  final): 9 perguntas no ClipOS e 8 no FacelessOS, alinhadas aos requisitos de cada app
+  (ClipOS: Windows 10/11, OpenAI opcional, cookies do YouTube para alguns downloads;
+  FacelessOS: Windows 10/11, OpenAI + Pexels, ~US$ 0,47/vídeo com narração na nuvem). O
+  accordion vem do `script.js`, que as páginas de produto passaram a carregar.
 - **Apoio via Pix** (footer da home, linha compacta `.pix-inline` desde 2026-08-29): chave
   `kenzo.nakagawa03@gmail.com` com botão "Copiar".
-- **Termos de Uso** (`termos.html`): linkado no footer de todas as páginas.
+- **Termos de Uso** (`termos.html`): linkado no footer de todas as páginas. Atualizados em
+  2026-09-13 para cobrir os apps: definições (Seções 2 e 3) incluem aplicativos; requisitos
+  (Seção 4) só exigem n8n para fluxos e remetem custos/requisitos à página de cada Produto
+  (saiu o "~US$ 14/mês" fixo); Seções 6, 7 e 8 citam aplicativos.
 
 ---
 
@@ -225,7 +243,7 @@ arquivo, voice IDs ou nomes de canal.
   economia de tempo e eficiência. Há disclaimers de "resultados não garantidos".
 - **Privacidade**: o CPF do dono aparece **mascarado** (`493.***.***-64`) nos Termos. O CPF
   completo **não está no repositório**. Não publicar dados sensíveis.
-- **Não expor internos dos fluxos n8n** (chaves, credenciais, paths, IDs, nome de canal).
+- **Não expor internos dos apps/fluxos** (chaves, credenciais, paths, IDs, nome de canal).
 - **Acessibilidade**: manter contraste (texto escuro sobre amarelo!), foco visível e
   `prefers-reduced-motion`.
 - **Termos de Uso**: é uma minuta forte, **não revisada por advogado**. O CDC (Lei 8.078/90)
@@ -237,6 +255,11 @@ arquivo, voice IDs ou nomes de canal.
 
 ## 10. Pendências / TODO
 
+- [ ] **Confirmar com o Kenzo como a Kiwify libera os apps** (na hora ou só no 8º dia). Se
+      houver drip, recolocar a nota de transparência antes da compra (hero + CTA final das
+      duas páginas de produto). Hoje as páginas não citam prazo nenhum.
+- [ ] **Mac e Linux nas páginas dos apps** quando o Kenzo testar numa máquina real.
+- [ ] (Opcional) **Capturas de tela dos apps** nas páginas — sem mostrar nome de canal nem chaves.
 - [ ] **Blocos de comunidade viram botão** com o convite `https://discord.gg/aDYgBns94`
       (o bloco de link do Discord na home já usa esse convite).
 - [ ] **Imagens** em `assets/`: `perfil.jpg` e as capas dos produtos (hoje há
@@ -244,8 +267,8 @@ arquivo, voice IDs ou nomes de canal.
 - [x] ~~Meta `og:image`~~ — `og-cover.jpg` criada e og:url/og:image da home corrigidos (2026-07-19).
 - [ ] **GoatCounter**: criar conta gratuita em goatcounter.com com o código `kenzonakagawa`
       e descomentar o script nas 4 páginas (snippet já está lá, comentado).
-- [x] ~~Prova social~~ — vídeos reais embutidos nas 2 páginas (seção `#exemplo`, antes
-      da `#trilha`): `assets/exemplo-cortes.mp4` (Short 45s, 1,5 MB) e
+- [x] ~~Prova social~~ — vídeos reais embutidos nas 2 páginas (seção `#exemplo`, logo
+      depois de `#app`): `assets/exemplo-cortes.mp4` (Short 45s, 1,5 MB) e
       `assets/exemplo-videos.mp4` (trecho de 75s em 720p, ~17 MB — o original de 9 min
       tinha 168 MB, acima do limite de 100 MB do GitHub). `preload="metadata"` + poster
       jpg = a página segue leve; o vídeo só baixa no play (2026-08-03).
@@ -257,4 +280,4 @@ arquivo, voice IDs ou nomes de canal.
 
 ---
 
-_Última atualização deste contexto: 2026-08-29._
+_Última atualização deste contexto: 2026-09-13._
