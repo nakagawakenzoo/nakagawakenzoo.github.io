@@ -72,14 +72,14 @@ Tema **dark fixo**; a cor de destaque muda conforme o produto com que o visitant
 | `green` | FacelessOS (Automação de Vídeos) | `#10b981` |
 | `yellow` | Curso AUVP | `#facc15` |
 | `blue` | Salesforce Marketing Cloud | `#38bdf8` |
-| `rose` | Aeternum (jogo) | `#f43f5e` |
-| `cyan` | bloco TikTok + card PAPO AI | `#22d3ee` |
+| `rose` | (sem card desde 2026-11-13 — era o Aeternum) | `#f43f5e` |
+| `cyan` | bloco TikTok | `#22d3ee` |
 | `red` | bloco YouTube | `#ef4444` |
 | `pink` | bloco Instagram + card Migoo AI | `#ec4899` |
 | `indigo` | bloco Discord | `#6366f1` |
 | `blue` | bloco Grupo de ofertas (Telegram) — reaproveita o azul | `#38bdf8` |
 
-- Padrão inicial no CSS: **violeta** (na home o JS aplica logo a cor do 1º slide — amarelo AUVP).
+- Padrão inicial no CSS: **violeta** (na home o JS aplica logo a cor do 1º slide — rosa Migoo AI).
 - `script.js` copia os `--card*` do painel ativo para os `--accent*` globais. Na **home**,
   o painel "ativo" é o **slide atual do carrossel** (a cor da página cicla junto com o
   auto-avanço); o IntersectionObserver por rolagem só roda em página SEM carrossel.
@@ -97,11 +97,7 @@ Os produtos são **cards de carrossel** na home (borda + glow na cor do produto,
 arredondado — o formato facetado/diagonal saiu da home em 2026-08-29, junto com a arte
 lateral `panel-art`), um slide por produto:
 
-1. **Curso AUVP** (`yellow`) — afiliado do Raul Sena (Investidor Sardinha). Badge
-   "Indicação". Link de desconto: `https://sard.ink/AUVPKenzo` (dá desconto na matrícula;
-   trocado em 2026-08-29 — antes era `sard.ink/AUVP-Desenvolvimento` e, antes disso,
-   `form.auvp.com.br/...indicacao=...`).
-2. **Migoo AI — Vídeos de produto com IA** (`pink`) — indicação (criada em 2026-11-13):
+1. **Migoo AI — Vídeos de produto com IA** (`pink`) — indicação (criada em 2026-11-13):
    estúdio de IA no navegador que gera vídeos e fotos de produto para anúncios (estúdios de
    e-commerce, marketing e "short drama"/minisséries) e recria vídeos virais com o produto do
    usuário. Link de indicação: `https://migoo.ai/u/sg/wQV6842`; CTA "Conhecer a Migoo AI".
@@ -109,27 +105,31 @@ lateral `panel-art`), um slide por produto:
    em migoo.ai) — o card não promete nenhum dos três. Site só em web, em inglês por padrão
    (tem seletor com pt-BR). Rodapé do fornecedor: InfiniteAI Private Limited / Migoo
    Marvelous Technology Inc.
-3. **PAPO AI — Atendente de IA no WhatsApp** (`cyan`) — indicação de afiliado (criado em
-   2026-08-29): SaaS que responde leads no WhatsApp em segundos, qualifica e agenda reunião
-   (API oficial da Meta, no número do cliente). Link de indicação:
-   `https://papoai.com.br/52c8d9`; CTA "Testar 7 dias grátis" (trial do fornecedor —
-   conferir se ele mudar as condições). **Cupom em destaque** no card: `KENZO`
-   (`.panel-coupon`, pílula tracejada acima do CTA).
-4. **Aeternum — Hoje na História** (`rose`) — jogo autoral, **gratuito**, jogável no
-   navegador. Badge "Indicação". Link com UTM de campanha. https://playaeternum.com/
-   (movido para a 3ª posição a pedido do Kenzo em 2026-08-29).
-5. **ClipOS — App de Cortes** (`violet`) — **app de computador, vendas ABERTAS**. Badge
+2. **Curso AUVP** (`yellow`) — afiliado do Raul Sena (Investidor Sardinha). Badge
+   "Indicação". Link de desconto: `https://sard.ink/AUVPKenzo` (dá desconto na matrícula;
+   trocado em 2026-08-29 — antes era `sard.ink/AUVP-Desenvolvimento` e, antes disso,
+   `form.auvp.com.br/...indicacao=...`).
+3. **ClipOS — App de Cortes** (`violet`) — **app de computador, vendas ABERTAS**. Badge
    "Novo app · Vendas abertas"; botão "Conhecer o ClipOS" → `automacao-de-cortes.html` (que
    converte para o checkout Kiwify).
-6. **FacelessOS — App de Vídeos** (`green`) — **app de computador, vendas ABERTAS**. Badge
+4. **FacelessOS — App de Vídeos** (`green`) — **app de computador, vendas ABERTAS**. Badge
    "Novo app · Vendas abertas"; botão "Conhecer o FacelessOS" → `automacao-de-videos.html`.
-7. **Salesforce Marketing Cloud** (`blue`) — **Em breve** (`panel-soon`): botão
+5. **Salesforce Marketing Cloud** (`blue`) — **Em breve** (`panel-soon`): botão
    desabilitado + "Me avise no lançamento" (mailto).
 
 > Para reordenar/adicionar produtos, basta mover/criar o
 > `<article class="panel-row" data-accent="...">` dentro do trilho `#carTrack` — não há
 > mais regra de posição (o zigue-zague `panel-left/right` acabou); setas, bolinhas e
 > atributos aria dos slides são gerados pelo `script.js`.
+
+> **Saíram da home em 2026-11-13, a pedido do Kenzo:** os cards da **PAPO AI**
+> (indicação, `cyan`, com o cupom KENZO) e do **Aeternum — Hoje na História**
+> (jogo autoral gratuito, `rose`). Foi decisão dele, não esquecimento — não
+> recolocar sem pedido. Os links eram `https://papoai.com.br/52c8d9` e
+> `https://playaeternum.com/?utm_campaign=godparents&utm_source=profile&utm_medium=d7f08977`,
+> e o texto de cada card está no histórico do git (commit anterior a este).
+> Com isso, o componente **`.panel-coupon`/`.coupon-code`** (`styles.css`) ficou
+> **sem uso** — mantido porque é genérico e serve para qualquer card futuro com cupom.
 
 ### Links de checkout (Kiwify)
 - FacelessOS (Automação de Vídeos): `https://pay.kiwify.com.br/Uu09KDB`
