@@ -75,7 +75,7 @@ Tema **dark fixo**; a cor de destaque muda conforme o produto com que o visitant
 | `rose` | Aeternum (jogo) | `#f43f5e` |
 | `cyan` | bloco TikTok + card PAPO AI | `#22d3ee` |
 | `red` | bloco YouTube | `#ef4444` |
-| `pink` | bloco Instagram | `#ec4899` |
+| `pink` | bloco Instagram + card Migoo AI | `#ec4899` |
 | `indigo` | bloco Discord | `#6366f1` |
 | `blue` | bloco Grupo de ofertas (Telegram) — reaproveita o azul | `#38bdf8` |
 
@@ -101,21 +101,29 @@ lateral `panel-art`), um slide por produto:
    "Indicação". Link de desconto: `https://sard.ink/AUVPKenzo` (dá desconto na matrícula;
    trocado em 2026-08-29 — antes era `sard.ink/AUVP-Desenvolvimento` e, antes disso,
    `form.auvp.com.br/...indicacao=...`).
-2. **PAPO AI — Atendente de IA no WhatsApp** (`cyan`) — indicação de afiliado (criado em
+2. **Migoo AI — Vídeos de produto com IA** (`pink`) — indicação (criada em 2026-11-13):
+   estúdio de IA no navegador que gera vídeos e fotos de produto para anúncios (estúdios de
+   e-commerce, marketing e "short drama"/minisséries) e recria vídeos virais com o produto do
+   usuário. Link de indicação: `https://migoo.ai/u/sg/wQV6842`; CTA "Conhecer a Migoo AI".
+   **O site NÃO publica preço, plano grátis nem bônus de indicação** (conferido em 2026-11-13
+   em migoo.ai) — o card não promete nenhum dos três. Site só em web, em inglês por padrão
+   (tem seletor com pt-BR). Rodapé do fornecedor: InfiniteAI Private Limited / Migoo
+   Marvelous Technology Inc.
+3. **PAPO AI — Atendente de IA no WhatsApp** (`cyan`) — indicação de afiliado (criado em
    2026-08-29): SaaS que responde leads no WhatsApp em segundos, qualifica e agenda reunião
    (API oficial da Meta, no número do cliente). Link de indicação:
    `https://papoai.com.br/52c8d9`; CTA "Testar 7 dias grátis" (trial do fornecedor —
    conferir se ele mudar as condições). **Cupom em destaque** no card: `KENZO`
    (`.panel-coupon`, pílula tracejada acima do CTA).
-3. **Aeternum — Hoje na História** (`rose`) — jogo autoral, **gratuito**, jogável no
+4. **Aeternum — Hoje na História** (`rose`) — jogo autoral, **gratuito**, jogável no
    navegador. Badge "Indicação". Link com UTM de campanha. https://playaeternum.com/
    (movido para a 3ª posição a pedido do Kenzo em 2026-08-29).
-4. **ClipOS — App de Cortes** (`violet`) — **app de computador, vendas ABERTAS**. Badge
+5. **ClipOS — App de Cortes** (`violet`) — **app de computador, vendas ABERTAS**. Badge
    "Novo app · Vendas abertas"; botão "Conhecer o ClipOS" → `automacao-de-cortes.html` (que
    converte para o checkout Kiwify).
-5. **FacelessOS — App de Vídeos** (`green`) — **app de computador, vendas ABERTAS**. Badge
+6. **FacelessOS — App de Vídeos** (`green`) — **app de computador, vendas ABERTAS**. Badge
    "Novo app · Vendas abertas"; botão "Conhecer o FacelessOS" → `automacao-de-videos.html`.
-6. **Salesforce Marketing Cloud** (`blue`) — **Em breve** (`panel-soon`): botão
+7. **Salesforce Marketing Cloud** (`blue`) — **Em breve** (`panel-soon`): botão
    desabilitado + "Me avise no lançamento" (mailto).
 
 > Para reordenar/adicionar produtos, basta mover/criar o
@@ -288,4 +296,4 @@ chaves de API, IDs de credencial, caminhos de arquivo, voice IDs ou nomes de can
 
 ---
 
-_Última atualização deste contexto: 2026-09-13._
+_Última atualização deste contexto: 2026-11-13._
