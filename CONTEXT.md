@@ -216,7 +216,7 @@ chaves de API, IDs de credencial, caminhos de arquivo, voice IDs ou nomes de can
   glow cortado em bordas retas (feedback do Kenzo em vídeo) — não reintroduzir, e **nunca
   clipar `.tiles` com overflow** (corta o glow). Ordem: **Grupo de ofertas (Telegram)**
   `https://t.me/ofertasdokenzo` → TikTok → YouTube → Instagram → Discord
-  `https://discord.gg/aDYgBns94`. Sempre numa fileira única (encolhem via `clamp`). O header
+  `https://discord.gg/u8ruMGBvbb`. Sempre numa fileira única (encolhem via `clamp`). O header
   ficou **só com a marca** (os ícones sociais saíram de lá). **Kick foi removido** do site.
 - **Removidos da home em 2026-08-22**: título "Soluções" + subtítulo, seção "Como funciona",
   bloco de comunidade, FAQ e o **pop-up de lojas** (Amazon/ML/Shopee + Telegram). Os links
@@ -273,7 +273,7 @@ chaves de API, IDs de credencial, caminhos de arquivo, voice IDs ou nomes de can
       dia, nos dois produtos (Kenzo, 2026-09-13); nota de transparência de volta nas páginas.
 - [ ] **Mac e Linux nas páginas dos apps** quando o Kenzo testar numa máquina real.
 - [ ] (Opcional) **Capturas de tela dos apps** nas páginas — sem mostrar nome de canal nem chaves.
-- [ ] **Blocos de comunidade viram botão** com o convite `https://discord.gg/aDYgBns94`
+- [ ] **Blocos de comunidade viram botão** com o convite `https://discord.gg/u8ruMGBvbb`
       (o bloco de link do Discord na home já usa esse convite).
 - [ ] **Imagens** em `assets/`: `perfil.jpg` e as capas dos produtos (hoje há
       placeholders/anéis). Ver `assets/LEIA-ME.md`. (`og-cover.jpg` feita em 2026-07-19.)
