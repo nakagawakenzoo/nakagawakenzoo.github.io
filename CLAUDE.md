@@ -73,13 +73,13 @@ Tema **dark fixo**; a cor de destaque muda conforme o produto com que o visitant
 | `yellow` | Curso AUVP | `#facc15` |
 | `blue` | Salesforce Marketing Cloud | `#38bdf8` |
 | `rose` | (sem card desde 2026-11-13 — era o Aeternum) | `#f43f5e` |
-| `cyan` | bloco TikTok | `#22d3ee` |
+| `cyan` | Kooko AI + bloco TikTok | `#22d3ee` |
 | `red` | bloco YouTube | `#ef4444` |
 | `pink` | bloco Instagram + card Migoo AI | `#ec4899` |
 | `indigo` | bloco Discord | `#6366f1` |
 | `blue` | bloco Grupo de ofertas (Telegram) — reaproveita o azul | `#38bdf8` |
 
-- Padrão inicial no CSS: **violeta** (na home o JS aplica logo a cor do 1º slide — rosa Migoo AI).
+- Padrão inicial no CSS: **violeta** (na home o JS aplica logo a cor do 1º slide — ciano Kooko AI).
 - `script.js` copia os `--card*` do painel ativo para os `--accent*` globais. Na **home**,
   o painel "ativo" é o **slide atual do carrossel** (a cor da página cicla junto com o
   auto-avanço); o IntersectionObserver por rolagem só roda em página SEM carrossel.
@@ -97,7 +97,23 @@ Os produtos são **cards de carrossel** na home (borda + glow na cor do produto,
 arredondado — o formato facetado/diagonal saiu da home em 2026-08-29, junto com a arte
 lateral `panel-art`), um slide por produto:
 
-1. **Migoo AI — Vídeos de produto com IA** (`pink`) — indicação (criada em 2026-11-13):
+1. **Kooko AI — Workspace de IA** (`cyan`) — indicação (criada em 2026-11-17, a pedido do
+   Kenzo: "coloca o bloco da kooko em primeiro"). Workspace de IA tudo-em-um: apresentação,
+   documento, planilha, site, imagem, vídeo e pesquisa saem do mesmo chat, com app de
+   computador que trabalha nos arquivos locais e controle remoto a partir de outro aparelho
+   (verticais `htmlPPT`, `aiDocs`, `aiSpreadsheet`, `webBuilder`, `aiImage`, `aiVideo`,
+   `htmlResearch`). Link de indicação: `https://www.kooko.ai/?fr=kenzonakagawa_`; CTA
+   "Conhecer a Kooko AI". **O card NÃO publica preço nem plano grátis** (conferido em
+   2026-11-17): o valor muda conforme a página — o blog deles fala em US$ 19,99/mês ou
+   US$ 7,90/mês no anual, e o painel mostrava promo de Black Friday com US$ 14,99/mês,
+   US$ 6,99/mês no anual e teste de 3 dias por US$ 0,99 — e o próprio texto deles manda
+   confirmar os limites do nível grátis. Nada disso vai pro site. Reaproveita o acento
+   `cyan`, livre desde que o card da PAPO AI saiu. **O título é curto de propósito**:
+   "Kooko AI — Workspace de IA tudo-em-um" quebrava em 3 linhas (os outros cards usam 2) e
+   esticava o trilho inteiro. Obs.: quem já tem conta cai direto no painel ao abrir o link.
+   O **disclaimer do rodapé da home nomeia as indicações** (hoje Kooko AI, Migoo AI e
+   AUVP) — card de indicação novo entra nessa lista também.
+2. **Migoo AI — Vídeos de produto com IA** (`pink`) — indicação (criada em 2026-11-13):
    estúdio de IA no navegador que gera vídeos e fotos de produto para anúncios (estúdios de
    e-commerce, marketing e "short drama"/minisséries) e recria vídeos virais com o produto do
    usuário. Link de indicação: `https://migoo.ai/u/sg/wQV6842`; CTA "Conhecer a Migoo AI".
@@ -105,16 +121,16 @@ lateral `panel-art`), um slide por produto:
    em migoo.ai) — o card não promete nenhum dos três. Site só em web, em inglês por padrão
    (tem seletor com pt-BR). Rodapé do fornecedor: InfiniteAI Private Limited / Migoo
    Marvelous Technology Inc.
-2. **Curso AUVP** (`yellow`) — afiliado do Raul Sena (Investidor Sardinha). Badge
+3. **Curso AUVP** (`yellow`) — afiliado do Raul Sena (Investidor Sardinha). Badge
    "Indicação". Link de desconto: `https://sard.ink/AUVPKenzo` (dá desconto na matrícula;
    trocado em 2026-08-29 — antes era `sard.ink/AUVP-Desenvolvimento` e, antes disso,
    `form.auvp.com.br/...indicacao=...`).
-3. **ClipOS — App de Cortes** (`violet`) — **app de computador, vendas ABERTAS**. Badge
+4. **ClipOS — App de Cortes** (`violet`) — **app de computador, vendas ABERTAS**. Badge
    "Novo app · Vendas abertas"; botão "Conhecer o ClipOS" → `automacao-de-cortes.html` (que
    converte para o checkout Kiwify).
-4. **FacelessOS — App de Vídeos** (`green`) — **app de computador, vendas ABERTAS**. Badge
+5. **FacelessOS — App de Vídeos** (`green`) — **app de computador, vendas ABERTAS**. Badge
    "Novo app · Vendas abertas"; botão "Conhecer o FacelessOS" → `automacao-de-videos.html`.
-5. **Salesforce Marketing Cloud** (`blue`) — **Em breve** (`panel-soon`): botão
+6. **Salesforce Marketing Cloud** (`blue`) — **Em breve** (`panel-soon`): botão
    desabilitado + "Me avise no lançamento" (mailto).
 
 > Para reordenar/adicionar produtos, basta mover/criar o
@@ -194,7 +210,9 @@ chaves de API, IDs de credencial, caminhos de arquivo, voice IDs ou nomes de can
   ALTO** — card novo, bullet que quebra linha ou descrição maior pede nova medição. Medido
   sem rolagem em 2026-09-13: 1920×1080, 1280×1000, 1280×999, 1280×930, 1280×850, 1440×789,
   1536×730, 1280×720, 1024×700, 1366×657, 390×844, 375×812, 375×667 (só a janela atípica
-  820×600 rola ~38px). Cards dos apps na home: 4 bullets curtos, sem quebra. Os 5
+  820×600 rola ~38px). Remedido em 2026-11-17 com o card da Kooko: o trilho continuou em
+  537px a 1920×1080 (igual ao do site no ar) e não houve rolagem em 1366×657, 1280×720,
+  1024×700, 390×844 nem 375×667. Cards dos apps na home: 4 bullets curtos, sem quebra. Os 6
   produtos viraram slides de um **carrossel com peek** (`.carousel > .panels#carTrack`):
   o slide ativo fica **centralizado** (`--slide-w` = 74% desktop / 86% mobile, snap center)
   e os vizinhos aparecem **translúcidos de amostra** nas laterais (`.is-active` no ativo;
@@ -296,4 +314,4 @@ chaves de API, IDs de credencial, caminhos de arquivo, voice IDs ou nomes de can
 
 ---
 
-_Última atualização deste contexto: 2026-11-13._
+_Última atualização deste contexto: 2026-11-17._
